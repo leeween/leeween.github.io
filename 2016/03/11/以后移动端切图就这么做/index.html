@@ -69,7 +69,7 @@
 <meta property="og:image" content="http://yoursite.com/imgs/03-11b.jpg">
 <meta property="og:image" content="http://yoursite.com/imgs/03-11c.gif">
 <meta property="og:image" content="http://yoursite.com/imgs/03-11d.jpg">
-<meta property="og:updated_time" content="2016-03-11T16:47:41.996Z">
+<meta property="og:updated_time" content="2016-03-11T17:04:22.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端切图进化之路">
 <meta name="twitter:description" content="背景
@@ -311,7 +311,7 @@
 <li>由于设计稿是750px，因此设置body的宽度为750/100=7.5rem；  </li>
 <li>根据屏幕可见区域宽度设置根字体的大小<br><code>document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + &#39;px&#39;;</code>  </li>
 <li>字体大小单独使用<code>media query</code>  </li>
-<li>在这种解决方案下最重要的是设置<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1, minimum-scale=1&quot;&gt;</code><br>为了解决计算的麻烦可以使用一款名为<a href="https://github.com/flashlizi/cssrem" target="_blank" rel="external">cssrem</a>的sublime插件,如图所示<img src="/imgs/03-11c.gif" alt="cssrem"><br>在这种方案下只要根据设计稿中的原始尺寸进行输入，通过cssrem插件的单位转换，就可以得到适应于大多数移动端屏幕的页面布局了。<br><img src="/imgs/03-11d.jpg" alt="obama"></li>
+<li>在这种解决方案下最重要的是设置<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1, minimum-scale=1&quot;&gt;</code><br>为了解决计算的麻烦可以使用一款名为<a href="https://github.com/flashlizi/cssrem" target="_blank" rel="external">cssrem</a>的sublime插件,如图所示<img src="/imgs/03-11c.gif" alt="cssrem"><br>在这种方案下只要根据设计稿中的原始尺寸进行输入，通过cssrem插件的单位转换，就可以得到适应于大多数移动端屏幕的页面布局了。<br>这种方案最主要的是根据屏幕可见宽度设置html的<code>font-size</code>大小，由于<code>1rem等于html的font-size大小</code>，因此在不同屏幕下rem所表现出来的大小是不同的。这种方法应该能满足目前的日常工作需要。<br><img src="/imgs/03-11d.jpg" alt="obama"></li>
 </ol>
 
       
