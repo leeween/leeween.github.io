@@ -66,9 +66,10 @@
 <meta property="og:description" content="背景
 由于公司业务需要，年前做了几个移动端的活动页面。动画超级多的那种，其中有个页面是太阳慢慢出来，然后发光，还有小鸟飞过来，人慢慢慢的走来等等。由于有动画位置的变动，因此页面的很多小图片都是采取的绝对定位。在没有人带领和没有移动端页面制作的经验的情况下，全程靠自己摸索。最先开始制作页面全靠media query根据不同屏幕进行调试，最主要的是iphone不同机型的屏幕。活动页面的载体是微信端，制">
 <meta property="og:image" content="http://yoursite.com/imgs/03-11a.jpg">
-<meta property="og:image" content="http://yoursite.com/imgs/0.-11b.jpg">
-<meta property="og:image" content="http://yoursite.com/imgs/03-11c.png">
-<meta property="og:updated_time" content="2016-03-11T16:08:54.512Z">
+<meta property="og:image" content="http://yoursite.com/imgs/03-11b.jpg">
+<meta property="og:image" content="http://yoursite.com/imgs/03-11c.gif">
+<meta property="og:image" content="http://yoursite.com/imgs/03-11d.jpg">
+<meta property="og:updated_time" content="2016-03-11T16:47:41.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端切图进化之路">
 <meta name="twitter:description" content="背景
@@ -305,12 +306,12 @@
 
       
         <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><hr>
-<p>由于公司业务需要，年前做了几个移动端的活动页面。动画超级多的那种，其中有个页面是太阳慢慢出来，然后发光，还有小鸟飞过来，人慢慢慢的走来等等。由于有动画位置的变动，因此页面的很多小图片都是采取的绝对定位。在没有人带领和没有移动端页面制作的经验的情况下，全程靠自己摸索。最先开始制作页面全靠<code>media query</code>根据不同屏幕进行调试，最主要的是iphone不同机型的屏幕。活动页面的载体是微信端，制作页面前没有把微信上方的状态栏考虑到，当把在chrome上模拟调试好的页面放在真机上查看时，整个人是懵的。<img src="/imgs/03-11a.jpg" alt="懵逼状"><br>后来发现根据不同屏幕调试简直是神坑，毕竟市面上不同型号的手机屏幕太多了。因此第二次采取的是百分比，具体方法为根据设计图中尺寸来计算宽高所占整个设计图的百分比来进行设置，这样相对于刚开始的媒体查询省去了不少的功夫。但是最大的问题是计算，基本上都是无法除尽，每个小icon与文字间的距离不好把控导致不能完美还原设计稿。<img src="/imgs/0.-11b.jpg" alt="心里苦"><br>最后决定使用的解决方案：  </p>
+<p>由于公司业务需要，年前做了几个移动端的活动页面。动画超级多的那种，其中有个页面是太阳慢慢出来，然后发光，还有小鸟飞过来，人慢慢慢的走来等等。由于有动画位置的变动，因此页面的很多小图片都是采取的绝对定位。在没有人带领和没有移动端页面制作的经验的情况下，全程靠自己摸索。最先开始制作页面全靠<code>media query</code>根据不同屏幕进行调试，最主要的是iphone不同机型的屏幕。活动页面的载体是微信端，制作页面前没有把微信上方的状态栏考虑到，当把在chrome上模拟调试好的页面放在真机上查看时，整个人是懵的。<img src="/imgs/03-11a.jpg" alt="懵逼状"><br>后来发现根据不同屏幕调试简直是神坑，毕竟市面上不同型号的手机屏幕太多了。因此第二次采取的是百分比，具体方法为根据设计图中尺寸来计算宽高所占整个设计图的百分比来进行设置，这样相对于刚开始的媒体查询省去了不少的功夫。但是最大的问题是计算，基本上都是无法除尽，每个小icon与文字间的距离不好把控导致不能完美还原设计稿。<img src="/imgs/03-11b.jpg" alt="心里苦"><br>最后决定使用的解决方案：  </p>
 <ol>
 <li>由于设计稿是750px，因此设置body的宽度为750/100=7.5rem；  </li>
 <li>根据屏幕可见区域宽度设置根字体的大小<br><code>document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + &#39;px&#39;;</code>  </li>
 <li>字体大小单独使用<code>media query</code>  </li>
-<li>在这种解决方案下最重要的是设置<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1, minimum-scale=1&quot;&gt;</code><br>为了解决计算的麻烦可以使用一款名为<a href="https://github.com/flashlizi/cssrem" target="_blank" rel="external">cssrem</a>的sublime插件,如图所示<img src="/imgs/03-11c.png" alt="cssrem">。<br>在这种方案下只要根据设计稿中的原始尺寸进行输入，通过cssrem插件的单位转换，就可以得到适应于大多数移动端屏幕的页面布局了。</li>
+<li>在这种解决方案下最重要的是设置<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1, minimum-scale=1&quot;&gt;</code><br>为了解决计算的麻烦可以使用一款名为<a href="https://github.com/flashlizi/cssrem" target="_blank" rel="external">cssrem</a>的sublime插件,如图所示<img src="/imgs/03-11c.gif" alt="cssrem"><br>在这种方案下只要根据设计稿中的原始尺寸进行输入，通过cssrem插件的单位转换，就可以得到适应于大多数移动端屏幕的页面布局了。<br><img src="/imgs/03-11d.jpg" alt="obama"></li>
 </ol>
 
       
