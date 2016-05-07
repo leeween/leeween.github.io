@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="freecodecamp," />
+  <meta name="keywords" content="nodejs," />
 
 
 
@@ -57,31 +57,46 @@
 
 
 
-<meta name="description" content="string方法
-string.charCodeAt(pos)返回string中的pos位置处的字符的字符码位。  
-var str = &amp;quot;JonSnow&amp;quot;;  
-var initial = str.charCodeAt(0);  //initial=74  
-String.fromCharCode(char...)根据一串数字编码返回一个字符串。  
-var a = Stri">
+<meta name="description" content="#freecodecamp之node学习笔记 ###node安装
+
+nodejs官网 直接下载LTS长期支持版本  
+node -v查看nodejs版本号，npm -v查看npm版本号来确认是否安装成功。npm为nodejs包管理工具，安装nodejs会自动安装npm。  
+
+###Manage Packages with NPM
+
+内容出自how-to-npm并在c9上运行  
+
+
+Instal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Freecodecamp——Basic Algorithm Scripting总结">
-<meta property="og:url" content="http://yoursite.com/2016/04/27/Basic Algorithm Scripting/index.html">
+<meta property="og:title" content="nodejs学习笔记(1)">
+<meta property="og:url" content="http://yoursite.com/2016/05/07/node-study/index.html">
 <meta property="og:site_name" content="RunInWeb">
-<meta property="og:description" content="string方法
-string.charCodeAt(pos)返回string中的pos位置处的字符的字符码位。  
-var str = &amp;quot;JonSnow&amp;quot;;  
-var initial = str.charCodeAt(0);  //initial=74  
-String.fromCharCode(char...)根据一串数字编码返回一个字符串。  
-var a = Stri">
-<meta property="og:updated_time" content="2016-04-27T14:54:19.497Z">
+<meta property="og:description" content="#freecodecamp之node学习笔记 ###node安装
+
+nodejs官网 直接下载LTS长期支持版本  
+node -v查看nodejs版本号，npm -v查看npm版本号来确认是否安装成功。npm为nodejs包管理工具，安装nodejs会自动安装npm。  
+
+###Manage Packages with NPM
+
+内容出自how-to-npm并在c9上运行  
+
+
+Instal">
+<meta property="og:updated_time" content="2016-05-07T15:18:30.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Freecodecamp——Basic Algorithm Scripting总结">
-<meta name="twitter:description" content="string方法
-string.charCodeAt(pos)返回string中的pos位置处的字符的字符码位。  
-var str = &amp;quot;JonSnow&amp;quot;;  
-var initial = str.charCodeAt(0);  //initial=74  
-String.fromCharCode(char...)根据一串数字编码返回一个字符串。  
-var a = Stri">
+<meta name="twitter:title" content="nodejs学习笔记(1)">
+<meta name="twitter:description" content="#freecodecamp之node学习笔记 ###node安装
+
+nodejs官网 直接下载LTS长期支持版本  
+node -v查看nodejs版本号，npm -v查看npm版本号来确认是否安装成功。npm为nodejs包管理工具，安装nodejs会自动安装npm。  
+
+###Manage Packages with NPM
+
+内容出自how-to-npm并在c9上运行  
+
+
+Instal">
 
 
 
@@ -99,7 +114,7 @@ var a = Stri">
   };
 </script>
 
-  <title> Freecodecamp——Basic Algorithm Scripting总结 | RunInWeb </title>
+  <title> nodejs学习笔记(1) | RunInWeb </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +262,7 @@ var a = Stri">
             
             
               
-                Freecodecamp——Basic Algorithm Scripting总结
+                nodejs学习笔记(1)
               
             
           </h1>
@@ -259,8 +274,8 @@ var a = Stri">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-27T22:54:19+08:00" content="2016-04-27">
-              2016-04-27
+            <time itemprop="dateCreated" datetime="2016-05-07T23:16:59+08:00" content="2016-05-07">
+              2016-05-07
             </time>
           </span>
 
@@ -273,8 +288,8 @@ var a = Stri">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
                   </a>
                 </span>
 
@@ -289,8 +304,8 @@ var a = Stri">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/27/Basic Algorithm Scripting/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/27/Basic Algorithm Scripting/" itemprop="commentsCount"></span>
+                <a href="/2016/05/07/node-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/node-study/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -312,42 +327,103 @@ var a = Stri">
       
 
       
-        <h3 id="string方法"><a href="#string方法" class="headerlink" title="string方法"></a>string方法</h3><hr>
-<p><code>string.charCodeAt(pos)</code>返回string中的pos位置处的字符的字符码位。  </p>
-<pre><code>var str = &quot;JonSnow&quot;;  
-var initial = str.charCodeAt(0);  //initial=74  
-</code></pre><p><code>String.fromCharCode(char...)</code>根据一串数字编码返回一个字符串。  </p>
-<pre><code>var a = String.fromCharCode(67, 97, 116);//a是&quot;Cat&quot;  
-</code></pre><p><code>string.split(separator, limit)</code>分割成片段来返回一个字符串数组，limit为可选参数可以限制分割片段数量，separator参数可以使字符串或正则表达式。  </p>
-<pre><code>var str = &quot;Tyrion&quot;;  
-var arr1 = str.split(&quot;&quot;); // [&quot;T&quot;, &quot;y&quot;, &quot;r&quot;, &quot;i&quot;, &quot;o&quot;, &quot;n&quot;]
-var arr2 = str.split(&quot; &quot;); // [&quot;Tyrion&quot;]  
-var arr3 = str.split(&quot;&quot;, 2); // [&quot;T&quot;, &quot;y&quot;]  
-</code></pre><p><code>string.replace(searchValue, replaceValue)</code>对<code>string</code>进行查找和替换操作，并返回一个新的操作符，参数searchValue可以是一个字符串和正则表达式对象，如果是一个字符串，那么replaceValue只会在第一次出现的地方进行替换，如果是一个正则表达式并且带有g标示则会替换所有，如果没有带g标示，这只会替换第一个。</p>
-<pre><code>var str = &quot;A man, a plan, a canal. Panama&quot;;
-var result = str.replace(&quot;.&quot;, &quot;-&quot;); //&quot;ab-cd.ef&quot;
-</code></pre><p><code>string.slice(start, end)</code>返回一个新的字符串，参数为前闭后开，如果start为负数，则与<code>string.length</code>相加，end参数可选，默认值为<code>string.length</code>。</p>
-<pre><code>var str = &quot;Turn into something beautiful&quot;;
-var a = str.slice(0, 4); //&quot;Turn&quot;
-var b = str.slice(20); //&quot;beautiful&quot;
-var c = str.slice(-15, 20); //&quot;thing&quot;
-</code></pre><h3 id="array方法"><a href="#array方法" class="headerlink" title="array方法"></a>array方法</h3><hr>
-<p><code>array.reverse()</code>反转数组内容的顺序。  </p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var b = a.reverse(); //[&quot;3&quot;, &quot;2&quot;, &quot;1&quot;]
-</code></pre><p><code>arry.join(separator)</code>把array构造成一个字符串。首先把array中的每个元素构造成一个字符串，接着用一个separator分隔符把他们连在一起。  </p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var c = a.join(&quot;&quot;); //&quot;123&quot;
-var d = a.join(&quot;-&quot;); //1-2-3
-</code></pre><p><code>array.slice(start, end)</code>对array中的一段做浅复制，首先复制array[start],一直复制到array[end]为止。end参数可选，默认值为array.length。</p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var b = a.slice(0, 1); //[&quot;1&quot;]
-var c = a.slice(1); //[&quot;2&quot;, &quot;3&quot;]
-var d = a.slice(-2); //[&quot;2&quot;, &quot;3&quot;]
-</code></pre><p><code>array.splice(start, deleteCount, item...)</code>从array中移除一个或多个元素，并用新的item替换它们。参数start是从移除的元素开始，deleteCount是要移除的个数。</p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &quot;4&quot;, &quot;5&quot;, &quot;3&quot;]  b为[&quot;2&quot;]
-</code></pre>
+        <h2 id="freecodecamp之node学习笔记"><a href="#freecodecamp之node学习笔记" class="headerlink" title="#freecodecamp之node学习笔记 "></a>#<a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记 </h2><p>###node安装</p>
+<ol>
+<li><a href="https://nodejs.org/" title="nodejs官网" target="_blank" rel="external">nodejs官网</a> 直接下载LTS长期支持版本  </li>
+<li><code>node -v</code>查看nodejs版本号，<code>npm -v</code>查看npm版本号来确认是否安装成功。npm为nodejs包管理工具，安装nodejs会自动安装npm。  </li>
+</ol>
+<p>###Manage Packages with NPM</p>
+<blockquote>
+<p>内容出自<a href="https://github.com/npm/how-to-npm" target="_blank" rel="external">how-to-npm</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行  </p>
+</blockquote>
+<ol>
+<li>Install npm<br>安装npm: 　<code>npm install npm -g</code>，上面提到nodejs会自动安装npm，因此此处操作实为更新。  </li>
+<li>Dev Environment  </li>
+<li>Login<br>上述两步为新建开发文件夹以及模拟注册登录方便发布package  </li>
+<li><p>Start A Project<br><code>npm init</code> 引导你在当前文件夹下创建一个package.json文件，包括名称、版本、作者这些信息等，例如：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;@lee/chat-example&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;ISC&quot;
+}  
+</code></pre></li>
+<li><p>Install A Module<br><code>npm install &lt;modulename&gt;</code>,会在当前开发环境下下载module，如果加入参数 <code>-g</code> 则会在全局环境中安装该module，例如：<br><code>npm install @linclark/pkg</code>  </p>
+</li>
+<li><p>Listing Dependencies<br><code>npm ls</code>该命令可以查看项目中文件结构。如果按照上述步骤下来，此处会报错<code>npm ERR! extraneous: @linclark/pkg@1.0.2 /home/ubuntu/workspace/node_modules/@linclark/pkg</code>问题在于第五步，我们安装模块后并没有将其关联到项目中，因此我们需要在package.json中的dependencies添加依赖。运行<code>npm install @linclark/pkg --save</code>命令，此处<code>--save</code>代表安装该模块后再配置文件package.json文件中添加依赖，此时的package.json文件如下：  </p>
+<pre><code>{
+  &quot;name&quot;: &quot;leeween&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;,
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;keywords&quot;: [
+    &quot;an&quot;,
+    &quot;example&quot;
+  ]
+}
+</code></pre></li>
+<li><p>npm Test<br>新建test.js文件，随便打印点东西 <code>console.log(&quot;good job&quot;)</code><br>并在package.json中的scripts中添加<code>&quot;test&quot;: &quot;node test.js&quot;</code>此时的package.json文件如下：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;leeween&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;, 
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;,
+    &quot;test&quot;: &quot;node test.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;keywords&quot;: [
+    &quot;an&quot;,
+    &quot;example&quot;
+  ]
+}
+</code></pre><p>运行<code>node test.js</code> 会发现打印了good job  </p>
+</li>
+<li>Package Niceties<br>我们创建的package.json没有怎么填信息，所以当别人install下来的时候会直接懵逼，所以我们应该添加一个README.md文件来添加说明，最好将一下重要信息填在package.json中。  </li>
+<li>Publish<br><code>npm publish</code> 发布你的module，<code>npm view &lt;modulename&gt;</code>可以查看名为modulename的module内容，同时也可以检测该名称是否被用。  </li>
+<li>Version<br>npm中的每个package都拥有一个版本号，比如说1.2.3 其中3是指Patch version. Update for every change，2是指Minor version. Update for API additions，1是指Major version. Update for breaking API changes.<br><code>npm version &lt;versionnum&gt;</code>更新版本号至versionnum。  </li>
+<li>Dist Tag  </li>
+<li><p>Dist Tag Removal<br>how-to-npm中的11和12可能有bug，添加dist-tag一直404，官方<a href="https://github.com/npm/how-to-npm/issues/45" target="_blank" rel="external">github issue45</a>上也是似是而非，在此不做深究。语法如下： </p>
+<pre><code>npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;]
+npm dist-tag rm &lt;pkg&gt; &lt;tag&gt;
+npm dist-tag ls [&lt;pkg&gt;]
+
+aliases: dist-tags 
+</code></pre></li>
+</ol>
+
       
     </div>
 
@@ -361,7 +437,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
       
         <div class="post-tags">
           
-            <a href="/tags/freecodecamp/" rel="tag">#freecodecamp</a>
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
           
         </div>
       
@@ -370,17 +446,13 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/15/ife1/" rel="next" title="2016百度IFE前端技术学院Task01-07">
-                <i class="fa fa-chevron-left"></i> 2016百度IFE前端技术学院Task01-07
+              <a href="/2016/04/27/Basic Algorithm Scripting/" rel="next" title="Freecodecamp——Basic Algorithm Scripting总结">
+                <i class="fa fa-chevron-left"></i> Freecodecamp——Basic Algorithm Scripting总结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/07/node-study/" rel="prev" title="nodejs学习笔记(1)">
-                nodejs学习笔记(1) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -406,8 +478,8 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/27/Basic Algorithm Scripting/"
-           data-title="Freecodecamp——Basic Algorithm Scripting总结" data-url="http://yoursite.com/2016/04/27/Basic Algorithm Scripting/">
+      <div class="ds-thread" data-thread-key="2016/05/07/node-study/"
+           data-title="nodejs学习笔记(1)" data-url="http://yoursite.com/2016/05/07/node-study/">
       </div>
     
   </div>
@@ -520,7 +592,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#string方法"><span class="nav-number">1.</span> <span class="nav-text">string方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array方法"><span class="nav-number">2.</span> <span class="nav-text">array方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#freecodecamp之node学习笔记"><span class="nav-number">1.</span> <span class="nav-text">#freecodecamp之node学习笔记 </span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
