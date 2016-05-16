@@ -234,6 +234,209 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/16/express/" itemprop="url">
+                  nodejs学习笔记(3)——express
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-16T09:25:20+08:00" content="2016-05-16">
+              2016-05-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/16/express/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/express/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="freecodecamp之node学习笔记-3-——express"><a href="#freecodecamp之node学习笔记-3-——express" class="headerlink" title="freecodecamp之node学习笔记(3)——express"></a><a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记(3)——express</h1><hr>
+<h3 id="Build-Web-Apps-with-Expressjs"><a href="#Build-Web-Apps-with-Expressjs" class="headerlink" title="Build Web Apps with Expressjs"></a>Build Web Apps with Expressjs</h3><blockquote>
+<p>内容出自<a href="https://github.com/azat-co/expressworks" target="_blank" rel="external">expressworks</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行   </p>
+</blockquote>
+<p>1.<strong>HELLO WORLD!</strong><br>QUESTION:<br>创建一个Express.js文件的express的实例对象app,当访问<code>&#39;/home&#39;</code>时,输出<code>&#39;Hello World!&#39;</code><br>需要监听的端口号将会作为第一个参数传递给你的程序。<br>hello.js  </p>
+<pre><code>var express = require(&quot;express&quot;);
+var app = express();
+app.get(&apos;/home&apos;, function(req, res){
+    res.end(&quot;Hello World!&quot;);
+})
+app.listen(process.argv[2])  
+</code></pre><p>2.<strong>STATIC</strong><br>QUESTION:<br>在不使用路由的情况下，应用静态中间层来打开index.html。<br>需要监听的端口号将会作为第一个参数传递给你的程序，index.html文件作为第二个参数传递给你的程序。<br>TIPS:<br>应用静态中间层的方法：  </p>
+<pre><code>app.use(express.static(path.join(__dirname, &apos;public&apos;)));
+</code></pre><p>在本题中可以这样使用：  </p>
+<pre><code>app.use(express.static(process.argv[3]||path.join(__dirname, &apos;public&apos;)));
+</code></pre><p>static.js  </p>
+<pre><code>var express = require(&quot;express&quot;);
+var path = require(&quot;path&quot;);
+var app = express();
+
+app.use(express.static(process.argv[3] || path.join(__dirname, &apos;public&apos;)));
+app.listen(process.argv[2]);  
+</code></pre><p>3.<strong>JADE</strong><br>QUESTION:<br>创建一个Express.js文件的express的实例对象app，它的主页由jade模板引擎渲染。<br>主页在<code>&#39;/home&#39;</code>，展示数据时需要使用<code>toDateString</code><br>TIPS:<br>当文件夹名为’templates’时，在express.js中指定路径</p>
+<pre><code>app.set(&apos;views&apos;, path.join(__dirname, &apos;templates&apos;)) 
+</code></pre><p>在本题中’index.jade’作为第二个参数提供。<br>指出app使用的模板引擎  </p>
+<pre><code>app.set(&apos;view engine&apos;, &apos;jade&apos;)
+</code></pre><p><code>res.render()</code>接收模板名和展示出模板数据 </p>
+<pre><code>res.render(&apos;index&apos;, {date: new Date().toDateString()})
+</code></pre><p>jade.js:  </p>
+<pre><code>var express = require(&apos;express&apos;);
+var app = express();
+app.set(&apos;view engine&apos;, &apos;jade&apos;);
+app.set(&apos;views&apos;, process.argv[3]);
+app.get(&apos;/home&apos;, function(req, res) {
+  res.render(&apos;index&apos;, {date: new Date().toDateString()})
+});
+app.listen(process.argv[2]);
+</code></pre><p>4.<strong>GOOD OLD FORM</strong><br>QUESTION:<br>编写一个路由<code>&#39;/form&#39;</code>来管理HTML表单的input<code>&lt;form&gt;&lt;input name=&quot;str&quot;/&gt;&lt;/form&gt;)</code>并且打印出str的值。<br>TIPS:<br>处理post请求使用<code>post()</code>方法和<code>get()</code>方法类似。<br>Express.js用中间层来对的web server提供额外的功能。简言之，在你自己处理请求前中间层就是函数的调用。中间层提供了种类繁多的功能，例如logging,serving,static files以及error handling。在应用中用<code>use()</code>来添加中间层和转化中间层为参数。<br>Express.js用<code>body-parser</code>这个模块中的<code>urlencoded()</code>作为中间层来转化请求中的<code>x-www-form-urlencoded</code></p>
+<pre><code>var bodyparser = require(&apos;body-parser&apos;)
+app.use(bodyparser.urlencoded({extended: false}))
+</code></pre><p>我们可以这样翻转字符串  </p>
+<pre><code>req.body.str.split(&apos;&apos;).reverse().join(&apos;&apos;)       
+</code></pre><p>good.js:  </p>
+<pre><code>var express = require(&quot;express&quot;);
+var bodyParser = require(&quot;body-parser&quot;);
+var app = express();
+app.use(bodyParser.urlencoded({extended: false}));
+app.post(&apos;/form&apos;, function(req, res) {
+    var str = req.body.str.split(&apos;&apos;).reverse().join(&apos;&apos;);
+    res.end(str);
+});
+app.listen(process.argv[2]);
+</code></pre><p>5.<strong>STYLISH CSS</strong><br>QUESTION:<br>Style your HTML from previous example with some Stylus middleware.</p>
+<p>Your solution must listen on the port number supplied by process.argv[2].</p>
+<p>The path containing the HTML and Stylus files is provided in process.argv[3]<br>(they are in the same directory).<br>TIPS:<br>To plug-in stylus someone can use this middleware:</p>
+<pre><code>app.use(require(&apos;stylus&apos;).middleware(__dirname + &apos;/public&apos;));
+</code></pre><p>Remember that you need also to serve static files.<br>stylish.js  </p>
+<pre><code>var express = require(&apos;express&apos;);
+var stylus = require(&quot;stylus&quot;);
+
+var app = express();
+app.use(stylus.middleware(process.argv[3]));
+app.use(express.static(process.argv[3]));
+
+app.listen(process.argv[2]);
+</code></pre><p>6.<strong>PARAM PAM PAM</strong><br>QUESTION:<br>Create an Express.js server that processes PUT ‘/message/:id’ requests.For instance:</p>
+<pre><code>PUT /message/526aa677a8ceb64569c9d4fb
+</code></pre><p>TIPS:<br>As a response to these requests, return the SHA1 hash of the current date<br>plus the sent ID:</p>
+<pre><code>require(&apos;crypto&apos;)
+  .createHash(&apos;sha1&apos;)
+  .update(new Date().toDateString() + id)
+  .digest(&apos;hex&apos;) 
+</code></pre><p>To handle PUT requests use:</p>
+<pre><code>app.put(&apos;/path/:NAME&apos;, function(req, res){...});
+</code></pre><p>To extract parameters from within the request handlers, use:</p>
+<pre><code>req.params.NAME
+</code></pre><p>pam.js  </p>
+<pre><code>var express= require(&quot;express&quot;);
+var crypto = require(&quot;crypto&quot;);
+var app = express();
+
+app.put(&apos;/message/:NAME&apos;, function(req, res){
+    var id = req.params.NAME;
+    res.send(crypto
+        .createHash(&apos;sha1&apos;)
+        .update(new Date().toDateString() + id)
+        .digest(&apos;hex&apos;))
+})
+app.listen(process.argv[2])  
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/12/node-study2/" itemprop="url">
                   nodejs学习笔记(2)
                 </a>
@@ -1149,124 +1352,6 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/15/ife1/" itemprop="url">
-                  2016百度IFE前端技术学院Task01-07
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T20:14:20+08:00" content="2016-03-15">
-              2016-03-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IFE/" itemprop="url" rel="index">
-                    <span itemprop="name">IFE</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/15/ife1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/ife1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a><a href="https://github.com/leeween/lfe/tree/master/task001/mission07" target="_blank" rel="external">任务要求</a></h3><h3 id="img底部留白以及解决办法"><a href="#img底部留白以及解决办法" class="headerlink" title="img底部留白以及解决办法"></a>img底部留白以及解决办法</h3><p>如图<img src="/imgs/03-15a.png" alt="img底部留白"><br>可以看到img与div之间有留白。<br>解决办法：<br>1.给div赋值高度，强行让其没有留白；<br>2.给div设置<code>div {line-height: 0;}</code>或者<code>div {font-size: 0;}</code>同样可以解决问题；<br>3.给img设置<code>vertical-align: middle</code>属性。<br>每种方法各有利弊，需要在实际中自行选择。<br>产生原因以及更多精彩分析见张鑫旭大神的博客<a href="http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/" target="_blank" rel="external">CSS深入理解vertical-align和line-height的基友关系</a><br><code>input</code>紧邻的<code>button</code>在相同高度下也会出现<code>button</code>比<code>input</code>高1px的情况，同样使用<code>vertical-align: middle</code>可以解决。</p>
-<h3 id="使用css3-not选择器与父级元素margin负值的选择"><a href="#使用css3-not选择器与父级元素margin负值的选择" class="headerlink" title="使用css3 :not选择器与父级元素margin负值的选择"></a>使用css3 <code>:not</code>选择器与父级元素<code>margin</code>负值的选择</h3><p>经常碰到如图所示情形<img src="/imgs/03-15b.png" alt="选择"><br>即在同一行中相同元素两边有空隙或者竖线，而两边是没有的。当然此图可以设置<code>margin-left</code>。在不考虑ie9以下浏览器时应该使用css3中的<code>:not</code>选择器，而需要兼容低级IE浏览器时只需包裹一层父元素，令父元素的<code>margin</code>为负值。  </p>
-<h3 id="textarea相关"><a href="#textarea相关" class="headerlink" title="textarea相关"></a>textarea相关</h3><p><code>textarea</code>不继承<code>body</code>的字体属性，需要自行设定，(⊙﹏⊙)以前真不知道；<br>禁止<code>textarea</code>缩放，只需添加<code>textarea {resize: none;}</code>。</p>
-<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>第一次使用<a href="http://fecs.baidu.com/" target="_blank" rel="external">fecs</a>检查代码，吓死了，还好全是缩进的问题。不过对于代码的整洁以及风格比较有帮助。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1312,7 +1397,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

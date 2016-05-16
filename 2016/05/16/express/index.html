@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mongodb," />
+  <meta name="keywords" content="nodejs," />
 
 
 
@@ -57,16 +57,28 @@
 
 
 
-<meta name="description" content="mongodb首先安装mongodb，官方下载，然后直接安装，获取安装文件夹bin所在目录将其添加到系统变量中。使用mongod -v来验证是否添加成功。安装好mongodb后直接输入指令mongo会报错，errno:10061 由于目标计算机积极拒绝，无法连接原因在于未添加配置文件，步骤如下：1.在所需文件夹下创建数据目录mkdir data，创建日志目录mkdir log;2.使用mongo命">
+<meta name="description" content="freecodecamp之node学习笔记(3)——express
+Build Web Apps with Expressjs
+内容出自expressworks并在c9上运行   
+
+1.HELLO WORLD!QUESTION:创建一个Express.js文件的express的实例对象app,当访问&amp;#39;/home&amp;#39;时,输出&amp;#39;Hello World!&amp;#39;需要监听的端口号">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongodb安装以及启动服务">
-<meta property="og:url" content="http://yoursite.com/2016/05/12/mongodb/index.html">
+<meta property="og:title" content="nodejs学习笔记(3)——express">
+<meta property="og:url" content="http://yoursite.com/2016/05/16/express/index.html">
 <meta property="og:site_name" content="RunInWeb">
-<meta property="og:description" content="mongodb首先安装mongodb，官方下载，然后直接安装，获取安装文件夹bin所在目录将其添加到系统变量中。使用mongod -v来验证是否添加成功。安装好mongodb后直接输入指令mongo会报错，errno:10061 由于目标计算机积极拒绝，无法连接原因在于未添加配置文件，步骤如下：1.在所需文件夹下创建数据目录mkdir data，创建日志目录mkdir log;2.使用mongo命">
-<meta property="og:updated_time" content="2016-05-12T00:37:51.351Z">
+<meta property="og:description" content="freecodecamp之node学习笔记(3)——express
+Build Web Apps with Expressjs
+内容出自expressworks并在c9上运行   
+
+1.HELLO WORLD!QUESTION:创建一个Express.js文件的express的实例对象app,当访问&amp;#39;/home&amp;#39;时,输出&amp;#39;Hello World!&amp;#39;需要监听的端口号">
+<meta property="og:updated_time" content="2016-05-16T01:26:27.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb安装以及启动服务">
-<meta name="twitter:description" content="mongodb首先安装mongodb，官方下载，然后直接安装，获取安装文件夹bin所在目录将其添加到系统变量中。使用mongod -v来验证是否添加成功。安装好mongodb后直接输入指令mongo会报错，errno:10061 由于目标计算机积极拒绝，无法连接原因在于未添加配置文件，步骤如下：1.在所需文件夹下创建数据目录mkdir data，创建日志目录mkdir log;2.使用mongo命">
+<meta name="twitter:title" content="nodejs学习笔记(3)——express">
+<meta name="twitter:description" content="freecodecamp之node学习笔记(3)——express
+Build Web Apps with Expressjs
+内容出自expressworks并在c9上运行   
+
+1.HELLO WORLD!QUESTION:创建一个Express.js文件的express的实例对象app,当访问&amp;#39;/home&amp;#39;时,输出&amp;#39;Hello World!&amp;#39;需要监听的端口号">
 
 
 
@@ -84,7 +96,7 @@
   };
 </script>
 
-  <title> mongodb安装以及启动服务 | RunInWeb </title>
+  <title> nodejs学习笔记(3)——express | RunInWeb </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -232,7 +244,7 @@
             
             
               
-                mongodb安装以及启动服务
+                nodejs学习笔记(3)——express
               
             
           </h1>
@@ -244,8 +256,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T08:38:13+08:00" content="2016-05-12">
-              2016-05-12
+            <time itemprop="dateCreated" datetime="2016-05-16T09:25:20+08:00" content="2016-05-16">
+              2016-05-16
             </time>
           </span>
 
@@ -258,8 +270,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mongodb/" itemprop="url" rel="index">
-                    <span itemprop="name">mongodb</span>
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
                   </a>
                 </span>
 
@@ -274,8 +286,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/12/mongodb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/mongodb/" itemprop="commentsCount"></span>
+                <a href="/2016/05/16/express/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/express/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -297,22 +309,95 @@
       
 
       
-        <h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><p>首先安装mongodb，<a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">官方下载</a>，然后直接安装，获取安装文件夹bin所在目录将其添加到系统变量中。使用<code>mongod -v</code>来验证是否添加成功。<br>安装好mongodb后直接输入指令<code>mongo</code>会报错，<code>errno:10061 由于目标计算机积极拒绝，无法连接</code><br>原因在于未添加配置文件，步骤如下：<br>1.在所需文件夹下创建数据目录<code>mkdir data</code>，创建日志目录<code>mkdir log</code>;<br>2.使用mongo命令来启动数据服务<code>mongod --dbpath data --logpath log\mongod.log --logappend</code><br>语法为：   </p>
-<pre><code>mongod --dbpath $dbpath 
---logpath $logpath 
---logappend 
---fork
-</code></pre><p>3.在另一个终端中使用<code>mongo</code>来连接数据库  </p>
-<hr>
-<p>为了方便数据库的管理，我们可以将mongod命令添加到windows的系统服务中<br>安装数据库服务：  </p>
-<pre><code>mongod --dbpath &quot;C:\Users\Think\Desktop\nodejs+mongodb\data&quot; --logpath &quot;C:\Users\Think\Desktop\nodejs+mongodb\log\mongod.log&quot; --logappend --install --serviceName &quot;imooc&quot;  
-</code></pre><p>可以使用<code>net start imooc</code>命令来启动数据库服务，<code>net stop imooc</code>命令关闭数据库服务。<br>语法为： </p>
-<pre><code>mongod --dbpath &quot;$dbpath&quot;
---logpath &quot;$logpath&quot; --logappend
---install [remove]
---serviceName &quot;imooc&quot;
+        <h1 id="freecodecamp之node学习笔记-3-——express"><a href="#freecodecamp之node学习笔记-3-——express" class="headerlink" title="freecodecamp之node学习笔记(3)——express"></a><a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记(3)——express</h1><hr>
+<h3 id="Build-Web-Apps-with-Expressjs"><a href="#Build-Web-Apps-with-Expressjs" class="headerlink" title="Build Web Apps with Expressjs"></a>Build Web Apps with Expressjs</h3><blockquote>
+<p>内容出自<a href="https://github.com/azat-co/expressworks" target="_blank" rel="external">expressworks</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行   </p>
+</blockquote>
+<p>1.<strong>HELLO WORLD!</strong><br>QUESTION:<br>创建一个Express.js文件的express的实例对象app,当访问<code>&#39;/home&#39;</code>时,输出<code>&#39;Hello World!&#39;</code><br>需要监听的端口号将会作为第一个参数传递给你的程序。<br>hello.js  </p>
+<pre><code>var express = require(&quot;express&quot;);
+var app = express();
+app.get(&apos;/home&apos;, function(req, res){
+    res.end(&quot;Hello World!&quot;);
+})
+app.listen(process.argv[2])  
+</code></pre><p>2.<strong>STATIC</strong><br>QUESTION:<br>在不使用路由的情况下，应用静态中间层来打开index.html。<br>需要监听的端口号将会作为第一个参数传递给你的程序，index.html文件作为第二个参数传递给你的程序。<br>TIPS:<br>应用静态中间层的方法：  </p>
+<pre><code>app.use(express.static(path.join(__dirname, &apos;public&apos;)));
+</code></pre><p>在本题中可以这样使用：  </p>
+<pre><code>app.use(express.static(process.argv[3]||path.join(__dirname, &apos;public&apos;)));
+</code></pre><p>static.js  </p>
+<pre><code>var express = require(&quot;express&quot;);
+var path = require(&quot;path&quot;);
+var app = express();
 
-net strat/stop imooc
+app.use(express.static(process.argv[3] || path.join(__dirname, &apos;public&apos;)));
+app.listen(process.argv[2]);  
+</code></pre><p>3.<strong>JADE</strong><br>QUESTION:<br>创建一个Express.js文件的express的实例对象app，它的主页由jade模板引擎渲染。<br>主页在<code>&#39;/home&#39;</code>，展示数据时需要使用<code>toDateString</code><br>TIPS:<br>当文件夹名为’templates’时，在express.js中指定路径</p>
+<pre><code>app.set(&apos;views&apos;, path.join(__dirname, &apos;templates&apos;)) 
+</code></pre><p>在本题中’index.jade’作为第二个参数提供。<br>指出app使用的模板引擎  </p>
+<pre><code>app.set(&apos;view engine&apos;, &apos;jade&apos;)
+</code></pre><p><code>res.render()</code>接收模板名和展示出模板数据 </p>
+<pre><code>res.render(&apos;index&apos;, {date: new Date().toDateString()})
+</code></pre><p>jade.js:  </p>
+<pre><code>var express = require(&apos;express&apos;);
+var app = express();
+app.set(&apos;view engine&apos;, &apos;jade&apos;);
+app.set(&apos;views&apos;, process.argv[3]);
+app.get(&apos;/home&apos;, function(req, res) {
+  res.render(&apos;index&apos;, {date: new Date().toDateString()})
+});
+app.listen(process.argv[2]);
+</code></pre><p>4.<strong>GOOD OLD FORM</strong><br>QUESTION:<br>编写一个路由<code>&#39;/form&#39;</code>来管理HTML表单的input<code>&lt;form&gt;&lt;input name=&quot;str&quot;/&gt;&lt;/form&gt;)</code>并且打印出str的值。<br>TIPS:<br>处理post请求使用<code>post()</code>方法和<code>get()</code>方法类似。<br>Express.js用中间层来对的web server提供额外的功能。简言之，在你自己处理请求前中间层就是函数的调用。中间层提供了种类繁多的功能，例如logging,serving,static files以及error handling。在应用中用<code>use()</code>来添加中间层和转化中间层为参数。<br>Express.js用<code>body-parser</code>这个模块中的<code>urlencoded()</code>作为中间层来转化请求中的<code>x-www-form-urlencoded</code></p>
+<pre><code>var bodyparser = require(&apos;body-parser&apos;)
+app.use(bodyparser.urlencoded({extended: false}))
+</code></pre><p>我们可以这样翻转字符串  </p>
+<pre><code>req.body.str.split(&apos;&apos;).reverse().join(&apos;&apos;)       
+</code></pre><p>good.js:  </p>
+<pre><code>var express = require(&quot;express&quot;);
+var bodyParser = require(&quot;body-parser&quot;);
+var app = express();
+app.use(bodyParser.urlencoded({extended: false}));
+app.post(&apos;/form&apos;, function(req, res) {
+    var str = req.body.str.split(&apos;&apos;).reverse().join(&apos;&apos;);
+    res.end(str);
+});
+app.listen(process.argv[2]);
+</code></pre><p>5.<strong>STYLISH CSS</strong><br>QUESTION:<br>Style your HTML from previous example with some Stylus middleware.</p>
+<p>Your solution must listen on the port number supplied by process.argv[2].</p>
+<p>The path containing the HTML and Stylus files is provided in process.argv[3]<br>(they are in the same directory).<br>TIPS:<br>To plug-in stylus someone can use this middleware:</p>
+<pre><code>app.use(require(&apos;stylus&apos;).middleware(__dirname + &apos;/public&apos;));
+</code></pre><p>Remember that you need also to serve static files.<br>stylish.js  </p>
+<pre><code>var express = require(&apos;express&apos;);
+var stylus = require(&quot;stylus&quot;);
+
+var app = express();
+app.use(stylus.middleware(process.argv[3]));
+app.use(express.static(process.argv[3]));
+
+app.listen(process.argv[2]);
+</code></pre><p>6.<strong>PARAM PAM PAM</strong><br>QUESTION:<br>Create an Express.js server that processes PUT ‘/message/:id’ requests.For instance:</p>
+<pre><code>PUT /message/526aa677a8ceb64569c9d4fb
+</code></pre><p>TIPS:<br>As a response to these requests, return the SHA1 hash of the current date<br>plus the sent ID:</p>
+<pre><code>require(&apos;crypto&apos;)
+  .createHash(&apos;sha1&apos;)
+  .update(new Date().toDateString() + id)
+  .digest(&apos;hex&apos;) 
+</code></pre><p>To handle PUT requests use:</p>
+<pre><code>app.put(&apos;/path/:NAME&apos;, function(req, res){...});
+</code></pre><p>To extract parameters from within the request handlers, use:</p>
+<pre><code>req.params.NAME
+</code></pre><p>pam.js  </p>
+<pre><code>var express= require(&quot;express&quot;);
+var crypto = require(&quot;crypto&quot;);
+var app = express();
+
+app.put(&apos;/message/:NAME&apos;, function(req, res){
+    var id = req.params.NAME;
+    res.send(crypto
+        .createHash(&apos;sha1&apos;)
+        .update(new Date().toDateString() + id)
+        .digest(&apos;hex&apos;))
+})
+app.listen(process.argv[2])  
 </code></pre>
       
     </div>
@@ -327,7 +412,7 @@ net strat/stop imooc
       
         <div class="post-tags">
           
-            <a href="/tags/mongodb/" rel="tag">#mongodb</a>
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
           
         </div>
       
@@ -336,17 +421,13 @@ net strat/stop imooc
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/07/node-study/" rel="next" title="nodejs学习笔记(1)">
-                <i class="fa fa-chevron-left"></i> nodejs学习笔记(1)
+              <a href="/2016/05/12/node-study2/" rel="next" title="nodejs学习笔记(2)">
+                <i class="fa fa-chevron-left"></i> nodejs学习笔记(2)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/12/node-study2/" rel="prev" title="nodejs学习笔记(2)">
-                nodejs学习笔记(2) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -372,8 +453,8 @@ net strat/stop imooc
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/12/mongodb/"
-           data-title="mongodb安装以及启动服务" data-url="http://yoursite.com/2016/05/12/mongodb/">
+      <div class="ds-thread" data-thread-key="2016/05/16/express/"
+           data-title="nodejs学习笔记(3)——express" data-url="http://yoursite.com/2016/05/16/express/">
       </div>
     
   </div>
@@ -486,7 +567,7 @@ net strat/stop imooc
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb"><span class="nav-number">1.</span> <span class="nav-text">mongodb</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#freecodecamp之node学习笔记-3-——express"><span class="nav-number">1.</span> <span class="nav-text">freecodecamp之node学习笔记(3)——express</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-Web-Apps-with-Expressjs"><span class="nav-number">1.0.1.</span> <span class="nav-text">Build Web Apps with Expressjs</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
