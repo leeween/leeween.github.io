@@ -77,7 +77,7 @@ Array.prototype　　允许为所有数组对象附加属性。
 
 增删Array.prototype.pop()　　删除数组的最后一个元素，并返回这个元素。  
 Array">
-<meta property="og:updated_time" content="2016-05-19T00:16:01.514Z">
+<meta property="og:updated_time" content="2016-05-19T00:46:44.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript Array属性与方法">
 <meta name="twitter:description" content="Array在JavaScript中Array是一个全局对象，用来构造数组。  
@@ -330,13 +330,7 @@ Array">
 <p>Array.prototype.unshift()<br>　　在数组开头增加应该IE或多个元素，并返回数组的新长度。  </p>
 <h5 id="换序"><a href="#换序" class="headerlink" title="换序"></a>换序</h5><p>Array.prototype.reverse()<br>　　颠倒数组中元素的排列顺序，即从最后一个开始排序。  </p>
 <p>Array.prototype.sort()<br>　　对数组元素进行排序，并返回当前数组。<br>　　如果不指定按照哪种顺序进行排列，则按照转换为的字符串的诸个字符的Unicode位点进行排序。   </p>
-<p>Array.prototype.splice()<br>　　在任意的位置给数组添加或删除任意个元素。  </p>
-<pre><code>var arr = [1, 2, 3, 4];
-var newarr = arr.splice(1, 2, 3, 4);
-//  newarr = [2, 3]
-//  arr = [1, 3, 4, 4]
-//  从arr[1]开始删除两个，newarr为被删除的数组，在arr[1]添加3和4 
-</code></pre><blockquote>
+<blockquote>
 <p>下面的这些方法不会改变调用它们的对象的值，只会返回一个新的数组或者返回一个其它的期望值。  </p>
 </blockquote>
 <h5 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h5><p>Array.prototype.concat()<br>　　返回一个由当前数组和其它若干个数组或者若干个非数组值组合而成的新数组。  </p>
@@ -348,6 +342,12 @@ arr = arr.concat(newarr, 6);
 <pre><code>var arr = [1, 2, 3];
 arr.slice(0, 1);
 // arr = [1]   
+</code></pre><p>Array.prototype.splice()<br>　　在任意的位置给数组添加或删除任意个元素。  </p>
+<pre><code>var arr = [1, 2, 3, 4];
+var newarr = arr.splice(1, 2, 3, 4);
+//  newarr = [2, 3]
+//  arr = [1, 3, 4, 4]
+//  从arr[1]开始删除两个，newarr为被删除的数组，在arr[1]添加3和4 
 </code></pre><h5 id="转换为字符串"><a href="#转换为字符串" class="headerlink" title="转换为字符串"></a>转换为字符串</h5><p>Array.prototype.join()<br>　　连接所有数组元素组成一个字符串。  </p>
 <pre><code>var a = [&apos;Wind&apos;, &apos;Rain&apos;, &apos;Fire&apos;];
 var myVar1 = a.join();      // myVar1的值变为&quot;Wind,Rain,Fire&quot;
