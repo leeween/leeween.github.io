@@ -234,6 +234,454 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/12/node-study2/" itemprop="url">
+                  nodejs学习笔记(2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T22:43:21+08:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/12/node-study2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/node-study2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="freecodecamp之node学习笔记2"><a href="#freecodecamp之node学习笔记2" class="headerlink" title="freecodecamp之node学习笔记2"></a><a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记2</h1><hr>
+<h3 id="Start-a-Nodejs-Server"><a href="#Start-a-Nodejs-Server" class="headerlink" title="Start a Nodejs Server"></a>Start a Nodejs Server</h3><blockquote>
+<p>内容出自<a href="https://github.com/workshopper/learnyounode" target="_blank" rel="external">learnyounode</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行    </p>
+</blockquote>
+<p>1.<strong>HELLO WORLD</strong><br>在仓库内建立program.js文件，写入<code>console.log(&quot;HELLO NODEJS&quot;);</code>然后运行<code>node program.js</code>，会在命令行看到打印的HELLO NODEJS<br>2.<strong>BABY STEPS</strong><br><code>process</code>是一个全局对象，拥有一个数组其中包含完整命令行的<code>argv</code>属性，在program.js文件中写入<code>console.log(process.argv)</code>，然后运行<code>node program.js 1 2 3</code>，会在命令行看到打印的</p>
+<pre><code>[
+    &apos;node&apos;,
+    &apos;program.js&apos;,
+    &apos;1&apos;,
+    &apos;2&apos;,
+    &apos;3&apos;
+]
+</code></pre><p>需要思考的是怎样依次通过这些arguments，来计算出他们的和。由于数组中的第一个元素总是’node’，第二个元素总是’program.js’。因此我们需要从第三个元素开始循环（index2），同时需要注意的是这些数据是字符串，我们需要将其转化成数字。</p>
+<pre><code>var sum = 0;
+for(var i=2; i&lt;process.argv.length; i++) {
+    sum += Number(process.argv[i]);
+}
+console.log(sum);
+</code></pre><p>在命令行中输入<code>node program.js 1 2 3</code>会得到打印结果6。<br>3.<strong>MY FIRST I/O</strong><br>（题外：竟然有language选择，太好了。。。之前还在一个个对着词典查）<br>QUESTION:<br>　　编写一个程序，执行一个同步的对文件系统的操作，读取一个文件，并且在终端打印出这个文件中的内容的行(\n)数。(所要读取的文件的完整路径会在命令行第一个参数提供)<br>TIPS:<br>　　要执行一个对文件系统的操作，需要用到 fs 这个 Node核心模块。<br>　　要读取一个文件，你将需要使用  fs.readFileSync(‘file’)方法。<br>　　Buffer 对象是 Node 用来高效处理数据的方式，无论该数据是ascii还是二进制文件，或者其他的格式。Buffer 可以很容易地通过调用 <code>toString()</code>  方法转换为字符串。如：<code>var str = buf.toStrin</code><br>program.js  </p>
+<pre><code>var fs = require(&quot;fs&quot;);
+var filename = process.argv[2];
+var str = fs.readFileSync(filename).toString();
+var num = str.split(&quot;\n&quot;).length-1;
+console.log(num);  
+// 只要把 &apos;utf8&apos; 作为 readFileSync 的第二个参数传入  
+// 就可以不用 .toString() 来得到一个字符串  
+//  
+// fs.readFileSync(process.argv[2], &apos;utf8&apos;).split(&apos;\n&apos;).length - 1;
+</code></pre><p>在命令行输入<code>node program.js program.js</code>会得到打印结果8。<br>4.<strong>MY FIRST ASYNC I/O</strong><br>QUESTION:<br>　　编写一个程序，执行一个异步的对文件系统的操作，读取一个文件，并且在终端打印出这个文件中的内容的行(\n)数。(所要读取的文件的完整路径会在命令行第一个参数提供)<br>TIPS:<br>　　和前一个问题一样，但是需要使用更加符合nodejs风格的方式解决：异步  你将要使用<code>fs.readFile()</code>方法，而不是<code>fs.readFileSync()</code>，并且你需要从你所传入的回调函数中去收集数据（这些数据会作为第二参数传递给你的回调函数），而不是使用方法的返回值。<br>　　我们习惯中的 Node.js 回调函数都有像如下所示的特征：  </p>
+<pre><code>   function callback (err, data) { 
+    /* ... */ 
+}
+</code></pre><p>　　所以，可以通过检查第一个参数的真假值来判断是否有错误发生。如果没有错误发生，你会在第二个参数中获取到一个 Buffer 对象。和 <code>readFileSync()</code>一样，你可以传入 ‘utf8’作为它的第二个参数，然后把回调函数作为第三个参数，这样，你得到的将会是一个字符串，而不是 Buffer。<br>program.js:  </p>
+<pre><code>var fs = require(&quot;fs&quot;);
+var filename = process.argv[2];
+fs.readFile(filename, function(err, data){
+    if(err) {
+        throw err;
+    }
+    // 你也可以使用 fs.readFile(file, &apos;utf8&apos;, callback)
+    var lines = data.toString().split(&apos;\n&apos;).length-1;
+    console.log(lines)
+});
+</code></pre><p>在命令行输入<code>node program.js program.js</code>会得到打印结果8。<br>5.<strong>FILTERED LS</strong><br>QUESTION:<br>　　编写一个程序来打印出指定目录下的文件列表，并且以特定的文件名扩展名来过滤这个列表。这次会有两个参数提供给你，第一个是所给的文件目录路径（如：path/to/dir），第二个参数则是需要过滤出来的文件的扩展名。<br>　　举个例子：如果第二个参数是 txt，那么你需要过滤出那些扩展名为 .txt的文件。<br>　　注意，第二个参数将不会带有开头的 .。<br>　　你需要在终端中打印出这个被过滤出来的列表，每一行一个文件。另外，你必须使用异步的 I/O 操作<br>TIPS:<br>　　fs.readdir()方法接收两个参数：第一个是一个路径，第二个则是回调函数。<br>　　node 自带的 path 模块也很有用，特别是它那个 extname 方法。 </p>
+<pre><code>path.extname(index.html);
+//return &apos;.html&apos;
+path.extname(&apos;index.coffee.md&apos;)
+// returns &apos;.md&apos;
+path.extname(&apos;index.&apos;)
+// returns &apos;.&apos;
+path.extname(&apos;index&apos;)
+// returns &apos;&apos;
+path.extname(&apos;.index&apos;)
+// returns &apos;&apos;
+</code></pre><p>program.js:  </p>
+<pre><code>var fs = require(&quot;fs&quot;);
+var path = require(&quot;path&quot;);
+var content = process.argv[2];
+var ext = process.argv[3];
+fs.readdir(content, function(err, list){
+    if(err) {
+        throw err;
+    }
+    for(var i=0; i&lt;list.length; i++) {
+        var file = list[i];
+        if (path.extname(file) === &apos;.&apos; + ext) {
+            console.log(file);
+        }
+    }
+    //list.forEach(function(file) {  
+    //   if (path.extname(file) === &apos;.&apos; + ext) {  
+    //       console.log(file)  
+    //   }  
+    //})
+});
+</code></pre><p>6.<strong>MAKE IT MODULAR</strong><br>QUESTION:<br>　　编写一个模块(module)，这个模块必须导出（export）一个函数，这个函数将接收三个参数：目录名、文件扩展名、回调函数，并按此顺序传递。文件扩展名必须和传递给你的程序的扩展名字符串一模一样。<br>　　这个回调函数必须以 Node 编程中惯用的约定形式（err,data）去调用。这个约定指明了，除非发生了错误，否则所传进去给回调函数的第一  个参数将会是null，第二个参数才会是你的数据。在本题中，这个数据将会是你过滤出来的文件列表，并且是以数组的形式。如果你接收到了一个错误，如：来自 fs.readdir()的错误，则必须将这个错误作为第一个，也是唯一的参数传递给回调函数，并执行回调函数。<br>　　你绝对不能直接在你的模块文件中把结果打印到终端中，你只能在你的原始程序文件中编写打印结果的代码。<br>　　当你的程序接收到一些错误的时候，请简单的捕获它们，并且在终端中打印出相关的信息。   </p>
+<p>　　这里有四则规定，你的模块必须遵守：  </p>
+<p>　　» 导出一个函数，这个函数能准确接收上述的参数。<br>　　» 当有错误发生，或者有数据的时候，准确调用回调函数。<br>　　» 不要改变其他的任何东西，比如全局变量或者 stdout。<br>　　» 处理所有可能发生的错误，并把它们传递给回调<br>TIPS:<br>　　通过创建一个仅包含目录读取和文件过滤相关的函数的文件来建立一个新的模块。要使模块导出（export）单一函数（single function），你可以将你的函数赋值给module.exports 对象：  </p>
+<pre><code>module.exports = function (args) { /* ... */ }  
+</code></pre><p>　　或者你也可以使用命名函数，然后把函数名赋值给 module.exports。  </p>
+<p>　　要在你原来的程序中使用你新的模块，请用 require() 载入你的模块，这和载入 fs模块时候用 require(‘fs’) 一样，唯一的区别在于你的本地模块需要加上 ‘./‘这个相对路径前缀。所以，如果你的模块文件名字是mymodule.js，那么你需要像这样写：  </p>
+<pre><code>var mymodule = require(&apos;./mymodule.js&apos;)  
+</code></pre><p>　　‘.js’ 这个文件扩展名通常是可以省略的。  </p>
+<p>　　现在，mymodule 这个变量就指向了你的模块中module.exports了，因为你刚导出了一个单一的函数，所以现在所声明的变量mymodule 就是那个模块所导出的函数了，你可以直接调用它了！  </p>
+<p>　　同样，请记住，尽早捕获你的错误，并且在回调中返回：  </p>
+<pre><code>function bar (callback) {  
+   foo(function (err, data) {  
+     if (err)  
+       return callback(err) // 尽早返回错误  
+
+     // ... 没有错误，处理 `data`  
+
+     // 一切顺利，传递 null 作为 callback 的第一个参数  
+
+     callback(null, data)  
+   })  
+}  
+</code></pre><p>mymodule.js:  </p>
+<pre><code>var fs = require(&quot;fs&quot;);
+var path = require(&quot;path&quot;);
+module.exports = function(dir, ext, callback) {
+    fs.readdir(dir, function(err, data){
+        if (err) 
+            return callback(err);
+
+        data = data.filter(function (file) {
+            return path.extname(file) === &apos;.&apos; + ext;
+        })
+        callback(null, data);
+    })
+}
+</code></pre><p>program.js:  </p>
+<pre><code>var mymodule = require(&quot;./mymodule&quot;);
+var content = process.argv[2];
+var ext = process.argv[3];
+mymodule(content, ext, function (err, data) {  
+    if (err)  
+        return console.error(&apos;There was an error:&apos;, err)  
+
+    data.forEach(function (file) {  
+        console.log(file)  
+    })  
+}) 
+</code></pre><p>7.<strong>HTTP CLIENT</strong><br>QUESTION:<br>　　编写一个程序来发起一个 HTTP GET 请求，所请求的 URL为命令行参数的第一个。然后将每一个 “data”事件所得的数据，以字符串形式在终端（标准输出 stdout）的新的一行打印出来。<br>TIPS:<br>　　http.get() 方法是用来发起简单的 GET请求的快捷方式，使用这个方法可以一定程度简化你的程序。http.get()的第一个参数是你想要 GET 的 URL，第二个参数则是回调函数。  </p>
+<p>　　与其他的回调函数不同，这个回调函数有如下这些特征：  </p>
+<pre><code>function callback (response) { /* ... */ }  
+</code></pre><p>　　response 对象是一个 Node 的 Stream 类型的对象，你可以将 Node Stream当做一个会触发一些事件的对象，其中我们通常所需要关心的事件有三个：”data”，”error” 以及 “end”。你可以像这样来监听一个事件：  </p>
+<pre><code>response.on(&quot;data&quot;, function (data) { /* ... */ })  
+</code></pre><p>　　‘data’事件会在每个数据块到达并已经可以对其进行一些处理的时候被触发。数据块的大小将取决于数据源。  </p>
+<p>　　你从 http.get() 所获得的 response 对象/Stream 还有一个 setEncoding()的方法。如果你调用这个方法，并为其指定参数为 utf8，那么 data事件中会传递字符串，而不是标准的 Node Buffer 对象，这样，你也不用再手动将Buffer 对象转换成字符串了。<br>http.js:  </p>
+<pre><code>var http = require(&quot;http&quot;);
+var url = process.argv[2];
+http.get(url, function(res){
+    res = res.setEncoding();
+    res.on(&quot;data&quot;, console.log);
+    res.on(&quot;error&quot;, console.error);
+}).on(&quot;error&quot;, console.error);
+</code></pre><p>8.<strong>HTTP COLLECT</strong><br>QUESTION:<br>　　编写一个程序，发起一个 HTTP GET 请求，请求的 URL为所提供给你的命令行参数的第一个。收集所有服务器所返回的数据（不仅仅包括”data” 事件）然后在终端（标准输出 stdout）用两行打印出来。  </p>
+<p>　　你所打印的内容，第一行应该是一个整数，用来表示你所收到的字符串内容长度，第二行则是服务器返回给你的完整的字符串结果。<br>TIPS:<br>　　你可以把一个 stream pipe 到 bl 或 concat-stream中去，它们会为你收集数据。一旦 stream传输结束，一个回调函数会被执行，并且，这个回调函数会带上所收集的数据：  </p>
+<pre><code>response.pipe(bl(function (err, data) { /* ... */ }))  
+// 或  
+response.pipe(concatStream(function (data) { /* ... */ }))  
+</code></pre><p>　　要注意的是你可能需要使用 data.toString() 来把 Buffer 转换为字符串。<br>collection.js：  </p>
+<pre><code>var http = require(&quot;http&quot;);
+var bl = require(&quot;bl&quot;);
+var url = process.argv[2];
+
+http.get(url, function(res) {
+    res.pipe(bl(function(err, data){
+        if (err) 
+            return console.error(err);
+        data = data.toString();
+        console.log(data.length);
+        console.log(data);
+    }))
+})
+</code></pre><p>9.<strong>JUGGLING ASYNC</strong><br>QUESTION:<br>　　这一次，将有三个 URL 作为前三个命令行参数提供给你。  </p>
+<p>　　你需要收集每一个 URL 所返回的完整内容，然后将它们在终端（标准输出stdout）打印出来。这次你不需要打印出这些内容的长度，仅仅是内容本身即可（字符串形式）；每个 URL 对应的内容为一行。重点是你必须按照这些 URL在参数列表中的顺序将相应的内容排列打印出来才算完成。<br>TIPS:<br>　　不要期待这三台服务器能好好的一起玩耍！他们可能不会把完整的响应的结果按照你希望的顺序返回给你，所以你不能天真地只是在收到响应后直接打印出来，因为这样做的话，他们的顺序可能会乱掉。  </p>
+<p>　　你需要去跟踪到底有多少 URL完整地返回了他们的内容，然后用一个队列存储起来。一旦你拥有了所有的结果，你才可以把它们打印到终端。  </p>
+<p>　　对回调进行计数是处理 Node中的异步的基础。<br>async.js   </p>
+<pre><code>var http = require(&quot;http&quot;);
+var bl = require(&quot;bl&quot;);
+var list = [];
+var count = 0;
+
+for (var i=0; i&lt;3; i++) {
+    httpGet(i);
+}
+
+function httpGet (index) {
+    http.get(process.argv[2 + index], function(res) {
+        res.pipe(bl(function(err, data){
+            if (err) 
+                return console.error(err);
+
+            list[index] = data.toString();
+            count++;
+
+            if(count === 3) {
+                printList();
+            }
+        }))
+    })
+}
+function printList () {
+    for (var i =0; i&lt;3; i++) {
+        console.log(list[i]);
+    }
+}
+</code></pre><p>10.<strong>TIME SERVER</strong><br>QUESETION:<br>　　你的服务器应当监听一个端口，以获取一些 TCP连接，这个端口会经由第一个命令行参数传递给你的程序。针对每一个 TCP连接，你都必须写入当前的日期和24小时制的时间，如下格式：  </p>
+<pre><code>&quot;YYYY-MM-DD hh:mm&quot;  
+</code></pre><p>　　然后紧接着是一个换行符。  </p>
+<p>　　月份、日、小时和分钟必须用零填充成为固定的两位数：  </p>
+<pre><code>&quot;2013-07-06 17:42&quot;   
+</code></pre><p>TIPS:<br>　　这次练习中，我们将会创建一个 TCP 服务器。这里将不会涉及到任何 HTTP的事情，因此我们只需使用 net 这个 Node核心模块就可以了。它包含了所有的基础网络功能。  </p>
+<p>　　net 模块拥有一个名叫 net.createServer() 的方法，它会接收一个回调函数。和Node 中其他的回调函数不同，createServer()所用的回调函数将会被调用多次。你的服务器每收到一个 TCP连接，都会调用一次这个回调函数。这个回调函数有如下特征：  </p>
+<pre><code>function callback (socket) { /* ... */ }  
+</code></pre><p>　　net.createServer() 也会返回一个 TCP 服务器的实例，你必须调用server.listen(portNumber) 来让你的服务器开始监听一个特定的端口。  </p>
+<p>　　一个典型的 Node TCP 服务器将会如下所示：  </p>
+<pre><code>var net = require(&apos;net&apos;)  
+var server = net.createServer(function (socket) {  
+  // socket 处理逻辑  
+})  
+server.listen(8000)  
+</code></pre><p>　　记住，请一定监听由第一个命令行参数指定的端口。  </p>
+<p>　　socket 对象包含了很多关于各个连接的信息（meta-data），但是它也同时是一个Node 双工流（duplexStream），所以，它即可以读，也可以写。对这个练习来说，我们只需要对 socket写数据和关闭它就可以了。  </p>
+<p>　　使用  socket.write(data) 可以写数据到 socket 中，用  socket.end()可以关闭一个 socket。另外， .end()方法也可以接收一个数据对象作为参数，因此，你可简单地使用 socket.end(data)来完成写数据和关闭两个操作。<br>service.js   </p>
+<pre><code>var net = require(&quot;net&quot;);
+
+var server = net.createServer(function(socket) {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    month = month &lt; 10 ? &quot;0&quot; + month : month;
+    var day = date.getDate();
+    day = day &lt; 10 ? &quot;0&quot; + day : day;
+    var hour = date.getHours();
+    hour = hour &lt; 10 ? &quot;0&quot; + hour : hour;
+    var minute = date.getMinutes();
+    minute = minute &lt; 10 ? &quot;0&quot; + minute : minute;
+    var data = null;
+    data = year + &apos;-&apos; + month + &apos;-&apos; + day + &apos; &apos; + hour + &apos;:&apos; + minute + &apos;\n&apos;;
+    socket.end(data); 
+});
+server.listen(process.argv[2]);  
+
+//  var net = require(&apos;net&apos;)   
+//  function zeroFill(i) {  
+//   return (i &lt; 10 ? &apos;0&apos; : &apos;&apos;) + i  
+//  }    
+//  function now () {  
+//   var d = new Date()  
+//   return d.getFullYear() + &apos;-&apos;  
+//      + zeroFill(d.getMonth() + 1) + &apos;-&apos;  
+//      + zeroFill(d.getDate()) + &apos; &apos;  
+//      + zeroFill(d.getHours()) + &apos;:&apos;  
+//      + zeroFill(d.getMinutes())  
+//  }  
+//  var server = net.createServer(function (socket) {  
+//   socket.end(now() + &apos;\n&apos;)  
+//  })   
+//  server.listen(Number(process.argv[2])) 
+</code></pre><p>11.<strong>HTTP FILE SERVER</strong><br>QUESTION:<br>　　编写一个 HTTP 文件 服务器，它用于将每次所请求的文件返回给客户端。你的服务器需要监听所提供给你的第一个命令行参数所制定的端口。<br>　　同时，第二个会提供给你的程序的参数则是所需要响应的文本文件的位置。在这一题中，你必须使用 fs.createReadStream() 方法以 stream 的形式作出请求响应。<br>TIPS:<br>　　由于我们需要创建的是一个 HTTP 服务而不是普通的 TCP 服务，因此，你应该使用http 这个 Node 核心模块。它和 net 模块类似，http 模块拥有一个叫做http.createServer() 的方法，所不同的是它所创建的服务器是用 HTTP协议进行通信的。  </p>
+<p>　　http.createServer()接收一个回调函数作为参数，回调函数会在你的服务器每一次进行连接的时候执行，这个回调函数有以下的特征：  </p>
+<pre><code>function callback (request, response) { /* ... */ }  
+</code></pre><p>　　在这里，这两个参数是代表一个 HTTP 请求以及相应的响应的两个对象。request用来从请求中获取一些的属性，例如请求头和查询字符（query-string)，而response 会发送数据给客户端，包括响应头部和响应主体。  </p>
+<p>　　request 和 response 也都是 Nodestream！这意味着，如果需要的话，你可以使用流式处理（streaming）所抽象的那些方法来实现发送和接收数据。  </p>
+<p>　　http.createServer() 会返回一个 HTTP 服务器的实例。你需要调用server.listen(portNumber) 方法去监听一个特定的端口。  </p>
+<p>　　一个典型的 Node HTTP 服务器将会是这个样子：  </p>
+<pre><code>var http = require(&apos;http&apos;)  
+var server = http.createServer(function (req, res) {  
+  // 处理请求的逻辑...  
+})  
+server.listen(8000)    
+</code></pre><p>　　fs 这个核心模块也含有一些用来处理文件的流式（stream） API。你可以使用fs.createReadStream() 方法来为命令行参数指定的文件创建一个stream。这个方法会返回一个 stream 对象，该对象可以使用类似 src.pipe(dst)的语法把数据从 src流传输(pipe) 到dst流中。通过这种形式，你可以轻松地把一个文件系统的 stream 和一个 HTTP响应的 stream 连接起来。<br>file.js:   </p>
+<pre><code>var http = require(&apos;http&apos;);  
+var fs = require(&apos;fs&apos;); 
+
+var server = http.createServer(function (req, res) {  
+       res.writeHead(200, { &apos;content-type&apos;: &apos;text/plain&apos; });  
+
+       fs.createReadStream(process.argv[3]).pipe(res);  
+})  
+
+server.listen(Number(process.argv[2]));
+</code></pre><p>12.<strong>HTTP UPPERCASERER</strong><br>QUESTION:<br>　　编写一个 HTTP 服务器，它只接受 POST 形式的请求，并且将 POST请求主体（body）所带的字符转换成大写形式，然后返回给客户端。  </p>
+<p>  你的服务器需要监听由第一个命令行参数所指定的端口。<br>TIPS:<br>　　through2-map 允许你创建一个 transformstream，它仅需要一个函数就能完成「接收一个数据块，处理完后返回这个数据块的功能 ，它的工作模式类似于 Array#map()，但是是针对 stream 的：  </p>
+<pre><code>var map = require(&apos;through2-map&apos;)  
+inStream.pipe(map(function (chunk) {  
+  return chunk.toString().split(&apos;&apos;).reverse().join(&apos;&apos;)  
+})).pipe(outStream)  
+</code></pre><p>　　在上面的例子中，从 inStream传进来的数据会被转换成字符串（如果它不是字符串的话），并且字符会反转处理，然后传入outStream。所以，我们这里是做了一个字符串反转器！记住！尽管，数据块（chunk）的大小是由上游（up-stream）所决定的，但是你还是可以在这之上对传进来的数据做一点小小的处理的。<br>uppercase.js:  </p>
+<pre><code>var http = require(&quot;http&quot;);
+var map = require(&apos;through2-map&apos;);
+
+var server = http.createServer(function(req, res) {
+    if (req.method !== &quot;POST&quot;) {
+        return res.end(&apos;send me a POST&apos;)
+    }
+    req.pipe(map(function (chunk) {  
+       return chunk.toString().toUpperCase();  
+    })).pipe(res); 
+});
+server.listen(process.argv[2]);
+</code></pre><p>13.<strong>HTTP JSON API SERVER</strong><br>QUESTION:<br>　　编写一个 HTTP 服务器，每当接收到一个路径为 ‘/api/parsetime’ 的 GET请求的时候，响应一些 JSON 数据。我们期望请求会包含一个查询参数（querystring），key 是 “iso”，值是 ISO 格式的时间。  </p>
+<p>如:  </p>
+<pre><code>/api/parsetime?iso=2013-08-10T12:10:15.474Z  
+</code></pre><p>所响应的 JSON 应该只包含三个属性：’hour’，’minute’ 和 ‘second’。例如：  </p>
+<pre><code>{  
+  &quot;hour&quot;: 14,  
+  &quot;minute&quot;: 23,  
+  &quot;second&quot;: 15  
+}  
+</code></pre><p>　　然后增再加一个接口，路径为’/api/unixtime’，它可以接收相同的查询参数（querystring），但是它的返回会包含一个属性：’unixtime’，相应值是一个 UNIX时间戳。例如:  </p>
+<pre><code>{ &quot;unixtime&quot;: 1376136615474 }  
+</code></pre><p>　　你的服务器需要监听第一个命令行参数所指定的端口。<br>TIPS:<br>　　HTTP 服务器的 request 对象含有一个 url属性，你可以通过它来决定具体需要走哪一条”路由”。  </p>
+<p>　　你可以使用 Node 的核心模块 ‘url’ 来处理 URL 和 查询参数（query string）。<code>url.parse(request.url, true)</code> 方法会处理request.url，它返回的对象中包含了一些很有帮助的属性，方便你处理querystring。<br>　　你的响应应该是一个 JSON 字符串的形式。请查看 JSON.stringify()来获取更多信息。  </p>
+<p>　　你也应当争做 Web 世界的好公民，正确地为响应设置 Content-Type 属性：  </p>
+<pre><code>res.writeHead(200, { &apos;Content-Type&apos;: &apos;application/json&apos; })  
+</code></pre><p>　　JavaScript 的 Date 可以将日期以 ISO 的格式展现出来，如：<code>newDate().toISOString()</code>。并且，如果你把一个字符串传给Date的构造函数，它也可以帮你将字符串处理成日期类型。另外，<code>Date.getTime()</code>方法应该也会很有用。<br>json.js:  </p>
+<pre><code>var http = require(&apos;http&apos;)  
+var url = require(&apos;url&apos;)  
+
+function parsetime (time) {  
+    return {  
+        hour: time.getHours(),  
+        minute: time.getMinutes(),  
+        second: time.getSeconds()  
+    }  
+}  
+
+function unixtime (time) {  
+    return { unixtime : time.getTime() }  
+}  
+
+var server = http.createServer(function (req, res) {  
+    var parsedUrl = url.parse(req.url, true)  
+    var time = new Date(parsedUrl.query.iso)  
+    var result  
+
+    if (/^\/api\/parsetime/.test(req.url))  
+        result = parsetime(time)  
+    else if (/^\/api\/unixtime/.test(req.url))  
+        result = unixtime(time)  
+
+    if (result) {  
+        res.writeHead(200, { &apos;Content-Type&apos;: &apos;application/json&apos; })  
+        res.end(JSON.stringify(result))  
+    } else {  
+        res.writeHead(404)  
+        res.end()  
+    }  
+})  
+server.listen(Number(process.argv[2]))  
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/12/mongodb/" itemprop="url">
                   mongodb安装以及启动服务
                 </a>
@@ -819,132 +1267,6 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/11/移动端切图/" itemprop="url">
-                  移动端切图进化之路
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-11T23:10:40+08:00" content="2016-03-11">
-              2016-03-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动端/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/11/移动端切图/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/移动端切图/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><hr>
-<p>由于公司业务需要，年前做了几个移动端的活动页面。动画超级多的那种，其中有个页面是太阳慢慢出来，然后发光，还有小鸟飞过来，人慢慢慢的走来等等。由于有动画位置的变动，因此页面的很多小图片都是采取的绝对定位。在没有人带领和没有移动端页面制作的经验的情况下，全程靠自己摸索。最先开始制作页面全靠<code>media query</code>根据不同屏幕进行调试，最主要的是iphone不同机型的屏幕。活动页面的载体是微信端，制作页面前没有把微信上方的状态栏考虑到，当把在chrome上模拟调试好的页面放在真机上查看时，整个人是懵的。<img src="/imgs/03-11a.jpg" alt="懵逼状">  </p>
-<h3 id="阶段"><a href="#阶段" class="headerlink" title="阶段"></a>阶段</h3><hr>
-<p>后来发现根据不同屏幕调试简直是神坑，毕竟市面上不同型号的手机屏幕太多了。因此第二次采取的是百分比，具体方法为根据设计图中尺寸来计算宽高所占整个设计图的百分比来进行设置，这样相对于刚开始的媒体查询省去了不少的功夫。但是最大的问题是计算，基本上都是无法除尽，每个小icon与文字间的距离不好把控导致不能完美还原设计稿。<img src="/imgs/03-11b.jpg" alt="苦">  </p>
-<h3 id="进化体"><a href="#进化体" class="headerlink" title="进化体"></a>进化体</h3><hr>
-<p>最后决定使用的解决方案：  </p>
-<ol>
-<li>由于设计稿是750px，因此设置body的宽度为750/100=7.5rem；  </li>
-<li>根据屏幕可见区域宽度设置根字体的大小<br><code>document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + &#39;px&#39;;</code>  </li>
-<li>字体大小单独使用<code>media query</code>  </li>
-<li>在这种解决方案下最重要的是设置<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1, minimum-scale=1&quot;&gt;</code><br>为了解决计算的麻烦可以使用一款名为<a href="https://github.com/flashlizi/cssrem" target="_blank" rel="external">cssrem</a>的sublime插件,如图所示<img src="/imgs/03-11c.gif" alt="cssrem"><br>在这种方案下只要根据设计稿中的原始尺寸进行输入，通过cssrem插件的单位转换，就可以得到适应于大多数移动端屏幕的页面布局了。<br>这种方案最主要的是根据屏幕可见宽度设置html的<code>font-size</code>大小，由于<code>1rem等于html的font-size大小</code>，因此在不同屏幕下rem所表现出来的大小是不同的。这种方法应该能满足目前的日常工作需要。<br><img src="/imgs/03-11d.jpg" alt="obama"></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -990,7 +1312,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1007,7 +1329,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
