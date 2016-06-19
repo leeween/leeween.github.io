@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="IFE," />
+  <meta name="keywords" content="css," />
 
 
 
@@ -57,19 +57,34 @@
 
 
 
-<meta name="description" content="任务要求img底部留白以及解决办法如图可以看到img与div之间有留白。解决办法：1.给div赋值高度，强行让其没有留白；2.给div设置div {line-height: 0;}或者div {font-size: 0;}同样可以解决问题；3.给img设置vertical-align: middle属性。每种方法各有利弊，需要在实际中自行选择。产生原因以及更多精彩分析见张鑫旭大神的博客CSS深入理">
+<meta name="description" content="在做freecodecamp项目时，为了美观改变input的边框颜色，为了偷懒就直接写了一句
+border-color: red;
+发现颜色有点不对，上边框和左边框颜色更为深一点，作为一个新时代的切图仔，这当然不能容忍。想到是不是box-shadow的问题，于是，将边框的宽度设置为：
+border-width: 20px;
+很显然，box-shadow直接排除掉了。百般思索，不得其解，然后网上搜索">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2016百度IFE前端技术学院Task01-07">
-<meta property="og:url" content="http://yoursite.com/2016/03/15/ife1/index.html">
+<meta property="og:title" content="input的border-color属性">
+<meta property="og:url" content="http://yoursite.com/2016/06/19/input的border-color属性/index.html">
 <meta property="og:site_name" content="RunInWeb">
-<meta property="og:description" content="任务要求img底部留白以及解决办法如图可以看到img与div之间有留白。解决办法：1.给div赋值高度，强行让其没有留白；2.给div设置div {line-height: 0;}或者div {font-size: 0;}同样可以解决问题；3.给img设置vertical-align: middle属性。每种方法各有利弊，需要在实际中自行选择。产生原因以及更多精彩分析见张鑫旭大神的博客CSS深入理">
-<meta property="og:image" content="http://yoursite.com/imgs/03-15a.png">
-<meta property="og:image" content="http://yoursite.com/imgs/03-15b.png">
-<meta property="og:updated_time" content="2016-03-15T13:12:58.093Z">
+<meta property="og:description" content="在做freecodecamp项目时，为了美观改变input的边框颜色，为了偷懒就直接写了一句
+border-color: red;
+发现颜色有点不对，上边框和左边框颜色更为深一点，作为一个新时代的切图仔，这当然不能容忍。想到是不是box-shadow的问题，于是，将边框的宽度设置为：
+border-width: 20px;
+很显然，box-shadow直接排除掉了。百般思索，不得其解，然后网上搜索">
+<meta property="og:image" content="http://yoursite.com/imgs/0619input/input1.jpg">
+<meta property="og:image" content="http://yoursite.com/imgs/0619input/input2.jpg">
+<meta property="og:image" content="http://yoursite.com/imgs/0619input/input3.jpg">
+<meta property="og:image" content="http://yoursite.com/imgs/0619input/input4.jpg">
+<meta property="og:image" content="http://yoursite.com/imgs/0619input/input5.jpg">
+<meta property="og:updated_time" content="2016-06-19T15:05:12.928Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2016百度IFE前端技术学院Task01-07">
-<meta name="twitter:description" content="任务要求img底部留白以及解决办法如图可以看到img与div之间有留白。解决办法：1.给div赋值高度，强行让其没有留白；2.给div设置div {line-height: 0;}或者div {font-size: 0;}同样可以解决问题；3.给img设置vertical-align: middle属性。每种方法各有利弊，需要在实际中自行选择。产生原因以及更多精彩分析见张鑫旭大神的博客CSS深入理">
-<meta name="twitter:image" content="http://yoursite.com/imgs/03-15a.png">
+<meta name="twitter:title" content="input的border-color属性">
+<meta name="twitter:description" content="在做freecodecamp项目时，为了美观改变input的边框颜色，为了偷懒就直接写了一句
+border-color: red;
+发现颜色有点不对，上边框和左边框颜色更为深一点，作为一个新时代的切图仔，这当然不能容忍。想到是不是box-shadow的问题，于是，将边框的宽度设置为：
+border-width: 20px;
+很显然，box-shadow直接排除掉了。百般思索，不得其解，然后网上搜索">
+<meta name="twitter:image" content="http://yoursite.com/imgs/0619input/input1.jpg">
 
 
 
@@ -87,7 +102,7 @@
   };
 </script>
 
-  <title> 2016百度IFE前端技术学院Task01-07 | RunInWeb </title>
+  <title> input的border-color属性 | RunInWeb </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -235,7 +250,7 @@
             
             
               
-                2016百度IFE前端技术学院Task01-07
+                input的border-color属性
               
             
           </h1>
@@ -247,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T20:14:20+08:00" content="2016-03-15">
-              2016-03-15
+            <time itemprop="dateCreated" datetime="2016-06-19T22:49:53+08:00" content="2016-06-19">
+              2016-06-19
             </time>
           </span>
 
@@ -261,8 +276,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IFE/" itemprop="url" rel="index">
-                    <span itemprop="name">IFE</span>
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
                   </a>
                 </span>
 
@@ -277,8 +292,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/15/ife1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/ife1/" itemprop="commentsCount"></span>
+                <a href="/2016/06/19/input的border-color属性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/19/input的border-color属性/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -300,10 +315,11 @@
       
 
       
-        <h3 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a><a href="https://github.com/leeween/lfe/tree/master/task001/mission07" target="_blank" rel="external">任务要求</a></h3><h3 id="img底部留白以及解决办法"><a href="#img底部留白以及解决办法" class="headerlink" title="img底部留白以及解决办法"></a>img底部留白以及解决办法</h3><p>如图<img src="/imgs/03-15a.png" alt="img底部留白"><br>可以看到img与div之间有留白。<br>解决办法：<br>1.给div赋值高度，强行让其没有留白；<br>2.给div设置<code>div {line-height: 0;}</code>或者<code>div {font-size: 0;}</code>同样可以解决问题；<br>3.给img设置<code>vertical-align: middle</code>属性。<br>每种方法各有利弊，需要在实际中自行选择。<br>产生原因以及更多精彩分析见张鑫旭大神的博客<a href="http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/" target="_blank" rel="external">CSS深入理解vertical-align和line-height的基友关系</a><br><code>input</code>紧邻的<code>button</code>在相同高度下也会出现<code>button</code>比<code>input</code>高1px的情况，同样使用<code>vertical-align: middle</code>可以解决。</p>
-<h3 id="使用css3-not选择器与父级元素margin负值的选择"><a href="#使用css3-not选择器与父级元素margin负值的选择" class="headerlink" title="使用css3 :not选择器与父级元素margin负值的选择"></a>使用css3 <code>:not</code>选择器与父级元素<code>margin</code>负值的选择</h3><p>经常碰到如图所示情形<img src="/imgs/03-15b.png" alt="选择"><br>即在同一行中相同元素两边有空隙或者竖线，而两边是没有的。当然此图可以设置<code>margin-left</code>。在不考虑ie9以下浏览器时应该使用css3中的<code>:not</code>选择器，而需要兼容低级IE浏览器时只需包裹一层父元素，令父元素的<code>margin</code>为负值。  </p>
-<h3 id="textarea相关"><a href="#textarea相关" class="headerlink" title="textarea相关"></a>textarea相关</h3><p><code>textarea</code>不继承<code>body</code>的字体属性，需要自行设定，(⊙﹏⊙)以前真不知道；<br>禁止<code>textarea</code>缩放，只需添加<code>textarea {resize: none;}</code>。</p>
-<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>第一次使用<a href="http://fecs.baidu.com/" target="_blank" rel="external">fecs</a>检查代码，吓死了，还好全是缩进的问题。不过对于代码的整洁以及风格比较有帮助。</p>
+        <p>在做freecodecamp项目时，为了美观改变input的边框颜色，为了偷懒就直接写了一句</p>
+<pre><code>border-color: red;
+</code></pre><p><img src="/imgs/0619input/input1.jpg" alt="input1"><br>发现颜色有点不对，上边框和左边框颜色更为深一点，作为一个新时代的切图仔，这当然不能容忍。想到是不是<code>box-shadow</code>的问题，于是，将边框的宽度设置为：</p>
+<pre><code>border-width: 20px;
+</code></pre><p><img src="/imgs/0619input/input2.jpg" alt="input2"><br>很显然，<code>box-shadow</code>直接排除掉了。百般思索，不得其解，然后网上搜索，似乎没有人遇到跟我一样的问题。<br>然后思索着，如果单独设置每个边框的<code>border-color</code>会不会好<br><img src="/imgs/0619input/input3.jpg" alt="input3"><br>结果发现还是这样子。最后决定打破一下当前思路，想一下以前是怎样设置input的边框的<br><img src="/imgs/0619input/input4.jpg" alt="input4"><br>似乎，有些不同！在这里面有设置了border的样式类型为solid，再次测试<br><img src="/imgs/0619input/input5.jpg" alt="input5"><br>果然，是因为浏览器默认的<code>border-style: inset;</code>的原因。一个<code>boder-style</code>竟然有如此之多的属性，需要学习和实践的东西还很多！</p>
 
       
     </div>
@@ -318,7 +334,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/IFE/" rel="tag">#IFE</a>
+            <a href="/tags/css/" rel="tag">#css</a>
           
         </div>
       
@@ -327,17 +343,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/11/移动端切图/" rel="next" title="移动端切图进化之路">
-                <i class="fa fa-chevron-left"></i> 移动端切图进化之路
+              <a href="/2016/06/02/npm-command-not-found/" rel="next" title="npm command not found 解决方法">
+                <i class="fa fa-chevron-left"></i> npm command not found 解决方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/27/Basic Algorithm Scripting/" rel="prev" title="Freecodecamp——Basic Algorithm Scripting总结">
-                Freecodecamp——Basic Algorithm Scripting总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -363,8 +375,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/15/ife1/"
-           data-title="2016百度IFE前端技术学院Task01-07" data-url="http://yoursite.com/2016/03/15/ife1/">
+      <div class="ds-thread" data-thread-key="2016/06/19/input的border-color属性/"
+           data-title="input的border-color属性" data-url="http://yoursite.com/2016/06/19/input的border-color属性/">
       </div>
     
   </div>
@@ -477,7 +489,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#任务要求"><span class="nav-number">1.</span> <span class="nav-text">任务要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#img底部留白以及解决办法"><span class="nav-number">2.</span> <span class="nav-text">img底部留白以及解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用css3-not选择器与父级元素margin负值的选择"><span class="nav-number">3.</span> <span class="nav-text">使用css3 :not选择器与父级元素margin负值的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#textarea相关"><span class="nav-number">4.</span> <span class="nav-text">textarea相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题外话"><span class="nav-number">5.</span> <span class="nav-text">题外话</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
