@@ -234,6 +234,215 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/07/node-study/" itemprop="url">
+                  nodejs学习笔记(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-07T23:16:59+08:00" content="2016-05-07">
+              2016-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/07/node-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/node-study/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="freecodecamp之node学习笔记"><a href="#freecodecamp之node学习笔记" class="headerlink" title="freecodecamp之node学习笔记"></a><a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记</h1><hr>
+<h3 id="node安装"><a href="#node安装" class="headerlink" title="node安装"></a>node安装</h3><ol>
+<li><a href="https://nodejs.org/" title="nodejs官网" target="_blank" rel="external">nodejs官网</a> 直接下载LTS长期支持版本  </li>
+<li><code>node -v</code>查看nodejs版本号，<code>npm -v</code>查看npm版本号来确认是否安装成功。npm为nodejs包管理工具，安装nodejs会自动安装npm。  </li>
+</ol>
+<h3 id="Manage-Packages-with-NPM"><a href="#Manage-Packages-with-NPM" class="headerlink" title="Manage Packages with NPM"></a>Manage Packages with NPM</h3><blockquote>
+<p>内容出自<a href="https://github.com/npm/how-to-npm" target="_blank" rel="external">how-to-npm</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行  </p>
+</blockquote>
+<ol>
+<li>Install npm<br>安装npm: 　<code>npm install npm -g</code>，上面提到nodejs会自动安装npm，因此此处操作实为更新。  </li>
+<li>Dev Environment  </li>
+<li>Login<br>上述两步为新建开发文件夹以及模拟注册登录方便发布package  </li>
+<li><p>Start A Project<br><code>npm init</code> 引导你在当前文件夹下创建一个package.json文件，包括名称、版本、作者这些信息等，例如：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;@lee/chat-example&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;ISC&quot;
+}  
+</code></pre></li>
+<li><p>Install A Module<br><code>npm install &lt;modulename&gt;</code>,会在当前开发环境下下载module，如果加入参数 <code>-g</code> 则会在全局环境中安装该module，例如：<br><code>npm install @linclark/pkg</code>  </p>
+</li>
+<li><p>Listing Dependencies<br><code>npm ls</code>该命令可以查看项目中文件结构。如果按照上述步骤下来，此处会报错<code>npm ERR! extraneous: @linclark/pkg@1.0.2 /home/ubuntu/workspace/node_modules/@linclark/pkg</code>问题在于第五步，我们安装模块后并没有将其关联到项目中，因此我们需要在package.json中的dependencies添加依赖。运行<code>npm install @linclark/pkg --save</code>命令，此处<code>--save</code>代表安装该模块后再配置文件package.json文件中添加依赖，此时的package.json文件如下：  </p>
+<pre><code>{
+  &quot;name&quot;: &quot;leeween&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;,
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;keywords&quot;: [
+    &quot;an&quot;,
+    &quot;example&quot;
+  ]
+}
+</code></pre></li>
+<li><p>npm Test<br>新建test.js文件，随便打印点东西 <code>console.log(&quot;good job&quot;)</code><br>并在package.json中的scripts中添加<code>&quot;test&quot;: &quot;node test.js&quot;</code>此时的package.json文件如下：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;leeween&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;, 
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;,
+    &quot;test&quot;: &quot;node test.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;keywords&quot;: [
+    &quot;an&quot;,
+    &quot;example&quot;
+  ]
+}
+</code></pre><p>运行<code>node test.js</code> 会发现打印了good job  </p>
+</li>
+<li>Package Niceties<br>我们创建的package.json没有怎么填信息，所以当别人install下来的时候会直接懵逼，所以我们应该添加一个README.md文件来添加说明，最好将一下重要信息填在package.json中。  </li>
+<li>Publish<br><code>npm publish</code> 发布你的module，<code>npm view &lt;modulename&gt;</code>可以查看名为modulename的module内容，同时也可以检测该名称是否被用。  </li>
+<li>Version<br>npm中的每个package都拥有一个版本号，比如说1.2.3 其中3是指Patch version. Update for every change，2是指Minor version. Update for API additions，1是指Major version. Update for breaking API changes.<br><code>npm version &lt;versionnum&gt;</code>更新版本号至versionnum。  </li>
+<li>Dist Tag  </li>
+<li><p>Dist Tag Removal<br>how-to-npm中的11和12可能有bug，添加dist-tag一直404，官方<a href="https://github.com/npm/how-to-npm/issues/45" target="_blank" rel="external">github issue45</a>上也是似是而非，在此不做深究。语法如下： </p>
+<pre><code>npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;]
+npm dist-tag rm &lt;pkg&gt; &lt;tag&gt;
+npm dist-tag ls [&lt;pkg&gt;]
+
+aliases: dist-tags 
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/27/Basic Algorithm Scripting/" itemprop="url">
                   Freecodecamp——Basic Algorithm Scripting总结
                 </a>
@@ -768,7 +977,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -776,7 +985,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -785,7 +994,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
