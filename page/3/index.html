@@ -234,6 +234,136 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/12/mongodb/" itemprop="url">
+                  mongodb安装以及启动服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T08:38:13+08:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mongodb/" itemprop="url" rel="index">
+                    <span itemprop="name">mongodb</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/12/mongodb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/mongodb/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><p>首先安装mongodb，<a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">官方下载</a>，然后直接安装，获取安装文件夹bin所在目录将其添加到系统变量中。使用<code>mongod -v</code>来验证是否添加成功。<br>安装好mongodb后直接输入指令<code>mongo</code>会报错，<code>errno:10061 由于目标计算机积极拒绝，无法连接</code><br>原因在于未添加配置文件，步骤如下：<br>1.在所需文件夹下创建数据目录<code>mkdir data</code>，创建日志目录<code>mkdir log</code>;<br>2.使用mongo命令来启动数据服务<code>mongod --dbpath data --logpath log\mongod.log --logappend</code><br>语法为：   </p>
+<pre><code>mongod --dbpath $dbpath 
+--logpath $logpath 
+--logappend 
+--fork
+</code></pre><p>3.在另一个终端中使用<code>mongo</code>来连接数据库  </p>
+<hr>
+<p>为了方便数据库的管理，我们可以将mongod命令添加到windows的系统服务中<br>安装数据库服务：  </p>
+<pre><code>mongod --dbpath &quot;C:\Users\Think\Desktop\nodejs+mongodb\data&quot; --logpath &quot;C:\Users\Think\Desktop\nodejs+mongodb\log\mongod.log&quot; --logappend --install --serviceName &quot;imooc&quot;  
+</code></pre><p>可以使用<code>net start imooc</code>命令来启动数据库服务，<code>net stop imooc</code>命令关闭数据库服务。<br>语法为： </p>
+<pre><code>mongod --dbpath &quot;$dbpath&quot;
+--logpath &quot;$logpath&quot; --logappend
+--install [remove]
+--serviceName &quot;imooc&quot;
+
+net strat/stop imooc
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/07/node-study/" itemprop="url">
                   nodejs学习笔记(1)
                 </a>
@@ -815,128 +945,11 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/08/new/" itemprop="url">
-                  the new blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-08T22:45:09+08:00" content="2016-03-08">
-              2016-03-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂记/" itemprop="url" rel="index">
-                    <span itemprop="name">杂记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/08/new/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/new/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>上个博客由于太久没用忘记操作以及颜值不高被无情清理掉了，因此，今天对照教程重新弄了一个。<br>主要是因为最近在工作时发现有些以前看到过的东西长时间不使用差不多全部忘记了，因此弄这个博客最主要的原因是想把这里当做一个记录笔记的地方，方便以后自己查询. </p>
-<hr>
-<p>I hear Jerusalem bells a-ringing<br>听那耶路撒冷钟声传来<br>Roman Cavalry choirs are singing<br>罗马骑兵歌声震彻山海<br>Be my mirror my sword and shield<br>担当我的明镜，利剑和盾牌<br>My missionaries in a foreign field<br>我的传教士屹立边疆之外<br>For some reason I can not explain<br>只因一些缘由我无法释怀<br>I know Saint Peter won’t call my name<br>我亦知天堂之门不会为我敞开<br>Never an honest word<br>不再有逆耳忠言存在<br>But that was when I ruled the world<br>而这便是我统治的时代</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -977,7 +990,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
