@@ -77,7 +77,7 @@ locate所搜索的后台数据库为/var/lib/mlocate，每天自动更新，可�
 
 第一行表示开启搜索限制
 第二行表示搜">
-<meta property="og:updated_time" content="2016-08-29T17:08:46.758Z">
+<meta property="og:updated_time" content="2016-08-30T16:10:06.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习linux（二）">
 <meta name="twitter:description" content="最近在慕课网学习linux，写这个学习笔记主要是记录学习的过程，以及方便以后查询。  
@@ -353,7 +353,7 @@ find /var/log/ -mtime +10            查找10天前修改的文件
                       +10             10天前修改的文件
 
 find . size +25k                     查找当前目录文件大于25k的文件
-            -25k                                          小于
+            -25k                                   小于
              25k                                     等于
 
 find . inum 222222                     查找i节点为222222的文件
@@ -366,9 +366,59 @@ find /etc -size +20k -a -size -50k -exec ls -lh {} \; 显示大于20k且小于50
 </code></pre><p><strong>grep</strong>  </p>
 <pre><code>grep [选项] 字符串 文件名             在文件名中匹配符合条件的字符串
      -i                               忽略大小写
-     -v                             排除指定的字符串
+     -v                                 排除指定的字符串
 </code></pre><p><strong>find与grep的区别</strong><br>find命令主要是搜索符合条件的文件名，如果需要匹配，使用通配符，是完全匹配<br>grep命令主要是搜索符合条件的字符串，如果需要匹配，使用正则表达式进行匹配，是包含匹配。</p>
+<h2 id="四、帮助命令"><a href="#四、帮助命令" class="headerlink" title="四、帮助命令"></a>四、帮助命令</h2><p><strong>man</strong>  </p>
+<pre><code>man 命令                            该命令使用q退出
+命令 --help
 
+help shell内部命令
+wherris 命令                        确定是否为内部命令
+help 命令
+
+info 命令                           列出所有命令清单
+</code></pre><p><strong>压缩</strong>  </p>
+<pre><code>zip 压缩文件名 原文件                压缩文件
+zip -r 压缩文件名 原目录             压缩目录
+unzip 压缩文件
+
+gzip 原文件                         压缩为.gz的文件，原文件消失
+gzip -c 原文件 &gt; 压缩文件            保留原文件    
+gzip -r 目录                        压缩目录下的所有子文件
+gzip -d 压缩文件                     解压
+gunzip 压缩文件                     解压缩文件
+
+bzip2压缩不能压缩目录
+bzip2 源文件                        压缩不保留源文件
+bzip2 -k 源文件                     保留原文件
+bzip2 -dk 压缩文件                  解压缩-k保留压缩文件
+bunzip2 -k 压缩文件
+
+tar -cvf 打包文件名 源文件
+    -c 打包
+    -v 显示过程
+    -f 指定打包后的文件
+tar -xvf 打包文件名
+    -x   解打包
+tar -zcvf 压缩包名.tar.gz 源文件
+    -z   压缩为.tar.bz2格式
+tar -zxvf 压缩包名.tar.gz
+tar -jcvf 后缀为tar.bz2
+</code></pre><p><strong>关机与重启命令</strong>  </p>
+<pre><code>shutdown [选项] 时间
+         -c 取消到前一个关机命令
+         -h 关机
+         -r 重启
+
+halt
+poweroff
+init 0
+
+reboot
+init 6
+
+logout  养成退出登录的习惯
+</code></pre>
       
     </div>
 
@@ -537,7 +587,7 @@ find /etc -size +20k -a -size -50k -exec ls -lh {} \; 显示大于20k且小于50
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#三、文件搜索命令"><span class="nav-number">1.</span> <span class="nav-text">三、文件搜索命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#三、文件搜索命令"><span class="nav-number">1.</span> <span class="nav-text">三、文件搜索命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、帮助命令"><span class="nav-number">2.</span> <span class="nav-text">四、帮助命令</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
