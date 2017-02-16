@@ -234,6 +234,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/11/移动端切图/" itemprop="url">
+                  移动端切图进化之路
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-11T23:10:40+08:00" content="2016-03-11">
+              2016-03-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/11/移动端切图/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/移动端切图/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><hr>
+<p>由于公司业务需要，年前做了几个移动端的活动页面。动画超级多的那种，其中有个页面是太阳慢慢出来，然后发光，还有小鸟飞过来，人慢慢慢的走来等等。由于有动画位置的变动，因此页面的很多小图片都是采取的绝对定位。在没有人带领和没有移动端页面制作的经验的情况下，全程靠自己摸索。最先开始制作页面全靠<code>media query</code>根据不同屏幕进行调试，最主要的是iphone不同机型的屏幕。活动页面的载体是微信端，制作页面前没有把微信上方的状态栏考虑到，当把在chrome上模拟调试好的页面放在真机上查看时，整个人是懵的。<img src="/imgs/03-11a.jpg" alt="懵逼状">  </p>
+<h3 id="阶段"><a href="#阶段" class="headerlink" title="阶段"></a>阶段</h3><hr>
+<p>后来发现根据不同屏幕调试简直是神坑，毕竟市面上不同型号的手机屏幕太多了。因此第二次采取的是百分比，具体方法为根据设计图中尺寸来计算宽高所占整个设计图的百分比来进行设置，这样相对于刚开始的媒体查询省去了不少的功夫。但是最大的问题是计算，基本上都是无法除尽，每个小icon与文字间的距离不好把控导致不能完美还原设计稿。<img src="/imgs/03-11b.jpg" alt="苦">  </p>
+<h3 id="进化体"><a href="#进化体" class="headerlink" title="进化体"></a>进化体</h3><hr>
+<p>最后决定使用的解决方案：  </p>
+<ol>
+<li>由于设计稿是750px，因此设置body的宽度为750/100=7.5rem；  </li>
+<li>根据屏幕可见区域宽度设置根字体的大小<br><code>document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + &#39;px&#39;;</code>  </li>
+<li>字体大小单独使用<code>media query</code>  </li>
+<li>在这种解决方案下最重要的是设置<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1, minimum-scale=1&quot;&gt;</code><br>为了解决计算的麻烦可以使用一款名为<a href="https://github.com/flashlizi/cssrem" target="_blank" rel="external">cssrem</a>的sublime插件,如图所示<img src="/imgs/03-11c.gif" alt="cssrem"><br>在这种方案下只要根据设计稿中的原始尺寸进行输入，通过cssrem插件的单位转换，就可以得到适应于大多数移动端屏幕的页面布局了。<br>这种方案最主要的是根据屏幕可见宽度设置html的<code>font-size</code>大小，由于<code>1rem等于html的font-size大小</code>，因此在不同屏幕下rem所表现出来的大小是不同的。这种方法应该能满足目前的日常工作需要。<br><img src="/imgs/03-11d.jpg" alt="obama"></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/08/new/" itemprop="url">
                   the new blog
                 </a>
@@ -375,7 +501,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -383,7 +509,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -392,7 +518,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -447,8 +573,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
