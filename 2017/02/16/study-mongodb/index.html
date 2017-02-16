@@ -57,8 +57,7 @@
 
 
 
-<meta name="description" content="###一、数据库  
-
+<meta name="description" content="一、数据库
 一个mongoDB可以创建多个数据库
 使用show dbs可以查看所有数据库的列表
 运行use命令可以连接到指定的数据库
@@ -67,13 +66,12 @@
 数据库的信息存储在集合中，他们统一使用系统的命名空间：DBNAME.system.*， 其中DBNAME可用db或数据库名替代
 
 DBNAME.system.namespaces ：列出所有名字空间
-D">
+DBNAME.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习MongoDB（一）">
 <meta property="og:url" content="http://yoursite.com/2017/02/16/study-mongodb/index.html">
 <meta property="og:site_name" content="RunInWeb">
-<meta property="og:description" content="###一、数据库  
-
+<meta property="og:description" content="一、数据库
 一个mongoDB可以创建多个数据库
 使用show dbs可以查看所有数据库的列表
 运行use命令可以连接到指定的数据库
@@ -82,12 +80,11 @@ D">
 数据库的信息存储在集合中，他们统一使用系统的命名空间：DBNAME.system.*， 其中DBNAME可用db或数据库名替代
 
 DBNAME.system.namespaces ：列出所有名字空间
-D">
-<meta property="og:updated_time" content="2017-02-16T15:48:56.035Z">
+DBNAME.">
+<meta property="og:updated_time" content="2017-02-16T15:54:03.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习MongoDB（一）">
-<meta name="twitter:description" content="###一、数据库  
-
+<meta name="twitter:description" content="一、数据库
 一个mongoDB可以创建多个数据库
 使用show dbs可以查看所有数据库的列表
 运行use命令可以连接到指定的数据库
@@ -96,7 +93,7 @@ D">
 数据库的信息存储在集合中，他们统一使用系统的命名空间：DBNAME.system.*， 其中DBNAME可用db或数据库名替代
 
 DBNAME.system.namespaces ：列出所有名字空间
-D">
+DBNAME.">
 
 
 
@@ -327,8 +324,7 @@ D">
       
 
       
-        <p>###一、数据库  </p>
-<ul>
+        <h3 id="一、数据库"><a href="#一、数据库" class="headerlink" title="一、数据库"></a>一、数据库</h3><ul>
 <li>一个mongoDB可以创建多个数据库</li>
 <li>使用show dbs可以查看所有数据库的列表</li>
 <li>运行use命令可以连接到指定的数据库</li>
@@ -342,14 +338,13 @@ D">
 <li>DBNAME.system.users ：列出访问数据库的用户</li>
 <li>DBNAME.system.sources ：列出服务器信息</li>
 </ul>
-<p>###二、数据库的创建和销毁  </p>
-<p>####创建<br>启动服务后，进入 MongoDB 命令行操作界面：<br><code>$ mongo</code><br>使用 use 命令创建数据库：<br><code>&gt; use mydb</code><br>查看当前连接的数据库：<br><code>&gt; db</code><br>查看所有的数据库：<br><code>&gt; show dbs</code><br>列出的所有数据库中看不到 mydb或者显示mydb(empty) ，因为 mydb 为空，里面没有任何东西，MongoDB不显示或显示mydb(empty)。  </p>
-<p>####销毁<br>使用 db.dropDatabase() 销毁数据库：</p>
+<h3 id="二、数据库的创建和销毁"><a href="#二、数据库的创建和销毁" class="headerlink" title="二、数据库的创建和销毁"></a>二、数据库的创建和销毁</h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>启动服务后，进入 MongoDB 命令行操作界面：<br><code>$ mongo</code><br>使用 use 命令创建数据库：<br><code>&gt; use mydb</code><br>查看当前连接的数据库：<br><code>&gt; db</code><br>查看所有的数据库：<br><code>&gt; show dbs</code><br>列出的所有数据库中看不到 mydb或者显示mydb(empty) ，因为 mydb 为空，里面没有任何东西，MongoDB不显示或显示mydb(empty)。  </p>
+<h4 id="销毁"><a href="#销毁" class="headerlink" title="销毁"></a>销毁</h4><p>使用 db.dropDatabase() 销毁数据库：</p>
 <pre><code>&gt; use local
  switched to db local
 &gt; db.dropDatabase()
 </code></pre><p>查看所有的数据库：<br><code>&gt; show dbs</code>  </p>
-<p>###三、集合（collection）的创建和删除<br>在数据库 mydb 中创建一个集合</p>
+<h3 id="三、集合（collection）的创建和删除"><a href="#三、集合（collection）的创建和删除" class="headerlink" title="三、集合（collection）的创建和删除"></a>三、集合（collection）的创建和删除</h3><p>在数据库 mydb 中创建一个集合</p>
 <pre><code>&gt; use mydb
 switched to db mydb
 &gt; db.createCollection(&quot;users&quot;)
@@ -360,11 +355,11 @@ switched to db mydb
 </code></pre><p>查看是否删除成功：</p>
 <p><code>&gt; show collections</code></p>
 <p>向集合中插入数据使用<code>insert()</code>和<code>save()</code>  </p>
-<p>###四、数据查询<br>find() 用法：<code>db.COLLECTION_NAME.find()</code>  </p>
+<h3 id="四、数据查询"><a href="#四、数据查询" class="headerlink" title="四、数据查询"></a>四、数据查询</h3><p>find() 用法：<code>db.COLLECTION_NAME.find()</code>  </p>
 <p>查询数据，不加任何参数默认返回所有数据记录：<br><code>&gt; db.post.find()</code>   </p>
 <p>查询数据，不加任何参数默认返回所有数据记录：<br><code>&gt; db.post.find()</code>  </p>
-<p>####AND<br>当 find() 中传入多个键值对时，MongoDB就会将其作为 AND 查询处理。用法：<code>db.COLLECTION_NAME.find({ key1: value1, key2: value2 }).pretty()</code>   </p>
-<p>####OR<br>MongoDB中，OR 查询语句以 $or 作为关键词，用法如下：</p>
+<h4 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h4><p>当 find() 中传入多个键值对时，MongoDB就会将其作为 AND 查询处理。用法：<code>db.COLLECTION_NAME.find({ key1: value1, key2: value2 }).pretty()</code>   </p>
+<h4 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h4><p>MongoDB中，OR 查询语句以 $or 作为关键词，用法如下：</p>
 <pre><code>&gt; db.post.find(
    {
       $or: [
@@ -372,8 +367,7 @@ switched to db mydb
       ]
    }
 ).pretty()   
-</code></pre><p>####同时使用AND和OR</p>
-<pre><code>&gt; db.post.find({
+</code></pre><h4 id="同时使用AND和OR"><a href="#同时使用AND和OR" class="headerlink" title="同时使用AND和OR"></a>同时使用AND和OR</h4><pre><code>&gt; db.post.find({
     &quot;likes&quot;: {$gt:10},
     $or: [
         {&quot;by&quot;: &quot;shiyanlou&quot;},
@@ -550,7 +544,7 @@ switched to db mydb
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数据库"><span class="nav-number">1.</span> <span class="nav-text">一、数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、数据库的创建和销毁"><span class="nav-number">2.</span> <span class="nav-text">二、数据库的创建和销毁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建"><span class="nav-number">2.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#销毁"><span class="nav-number">2.2.</span> <span class="nav-text">销毁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、集合（collection）的创建和删除"><span class="nav-number">3.</span> <span class="nav-text">三、集合（collection）的创建和删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、数据查询"><span class="nav-number">4.</span> <span class="nav-text">四、数据查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AND"><span class="nav-number">4.1.</span> <span class="nav-text">AND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OR"><span class="nav-number">4.2.</span> <span class="nav-text">OR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同时使用AND和OR"><span class="nav-number">4.3.</span> <span class="nav-text">同时使用AND和OR</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
