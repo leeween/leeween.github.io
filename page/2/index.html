@@ -234,6 +234,125 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/19/input的border-color属性/" itemprop="url">
+                  input的border-color属性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-19T22:49:53+08:00" content="2016-06-19">
+              2016-06-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/19/input的border-color属性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/19/input的border-color属性/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在做freecodecamp项目时，为了美观改变input的边框颜色，为了偷懒就直接写了一句</p>
+<pre><code>border-color: red;
+</code></pre><p><img src="/imgs/0619input/input1.png" alt="input1"><br>发现颜色有点不对，上边框和左边框颜色更为深一点，作为一个新时代的切图仔，这当然不能容忍。想到是不是<code>box-shadow</code>的问题，于是，将边框的宽度设置为：</p>
+<pre><code>border-width: 20px;
+</code></pre><p><img src="/imgs/0619input/input2.png" alt="input2"><br>很显然，<code>box-shadow</code>直接排除掉了。百般思索，不得其解，然后网上搜索，似乎没有人遇到跟我一样的问题。<br>然后思索着，如果单独设置每个边框的<code>border-color</code>会不会好<br><img src="/imgs/0619input/input3.png" alt="input3"><br>结果发现还是这样子。最后决定打破一下当前思路，想一下以前是怎样设置input的边框的<br><img src="/imgs/0619input/input4.png" alt="input4"><br>似乎，有些不同！在这里面有设置了border的样式类型为solid，再次测试<br><img src="/imgs/0619input/input5.png" alt="input5"><br>果然，是因为浏览器默认的<code>border-style: inset;</code>的原因。一个<code>boder-style</code>竟然有如此之多的属性，需要学习和实践的东西还很多！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/npm-command-not-found/" itemprop="url">
                   npm command not found 解决方法
                 </a>
@@ -905,209 +1024,6 @@ interactive_timeout=86400
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/16/express/" itemprop="url">
-                  nodejs学习笔记(3)——express
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-16T09:25:20+08:00" content="2016-05-16">
-              2016-05-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/16/express/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/express/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="freecodecamp之node学习笔记-3-——express"><a href="#freecodecamp之node学习笔记-3-——express" class="headerlink" title="freecodecamp之node学习笔记(3)——express"></a><a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记(3)——express</h1><hr>
-<h3 id="Build-Web-Apps-with-Expressjs"><a href="#Build-Web-Apps-with-Expressjs" class="headerlink" title="Build Web Apps with Expressjs"></a>Build Web Apps with Expressjs</h3><blockquote>
-<p>内容出自<a href="https://github.com/azat-co/expressworks" target="_blank" rel="external">expressworks</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行   </p>
-</blockquote>
-<p>1.<strong>HELLO WORLD!</strong><br>QUESTION:<br>创建一个Express.js文件的express的实例对象app,当访问<code>&#39;/home&#39;</code>时,输出<code>&#39;Hello World!&#39;</code><br>需要监听的端口号将会作为第一个参数传递给你的程序。<br>hello.js  </p>
-<pre><code>var express = require(&quot;express&quot;);
-var app = express();
-app.get(&apos;/home&apos;, function(req, res){
-    res.end(&quot;Hello World!&quot;);
-})
-app.listen(process.argv[2])  
-</code></pre><p>2.<strong>STATIC</strong><br>QUESTION:<br>在不使用路由的情况下，应用静态中间层来打开index.html。<br>需要监听的端口号将会作为第一个参数传递给你的程序，index.html文件作为第二个参数传递给你的程序。<br>TIPS:<br>应用静态中间层的方法：  </p>
-<pre><code>app.use(express.static(path.join(__dirname, &apos;public&apos;)));
-</code></pre><p>在本题中可以这样使用：  </p>
-<pre><code>app.use(express.static(process.argv[3]||path.join(__dirname, &apos;public&apos;)));
-</code></pre><p>static.js  </p>
-<pre><code>var express = require(&quot;express&quot;);
-var path = require(&quot;path&quot;);
-var app = express();
-
-app.use(express.static(process.argv[3] || path.join(__dirname, &apos;public&apos;)));
-app.listen(process.argv[2]);  
-</code></pre><p>3.<strong>JADE</strong><br>QUESTION:<br>创建一个Express.js文件的express的实例对象app，它的主页由jade模板引擎渲染。<br>主页在<code>&#39;/home&#39;</code>，展示数据时需要使用<code>toDateString</code><br>TIPS:<br>当文件夹名为’templates’时，在express.js中指定路径</p>
-<pre><code>app.set(&apos;views&apos;, path.join(__dirname, &apos;templates&apos;)) 
-</code></pre><p>在本题中’index.jade’作为第二个参数提供。<br>指出app使用的模板引擎  </p>
-<pre><code>app.set(&apos;view engine&apos;, &apos;jade&apos;)
-</code></pre><p><code>res.render()</code>接收模板名和展示出模板数据 </p>
-<pre><code>res.render(&apos;index&apos;, {date: new Date().toDateString()})
-</code></pre><p>jade.js:  </p>
-<pre><code>var express = require(&apos;express&apos;);
-var app = express();
-app.set(&apos;view engine&apos;, &apos;jade&apos;);
-app.set(&apos;views&apos;, process.argv[3]);
-app.get(&apos;/home&apos;, function(req, res) {
-  res.render(&apos;index&apos;, {date: new Date().toDateString()})
-});
-app.listen(process.argv[2]);
-</code></pre><p>4.<strong>GOOD OLD FORM</strong><br>QUESTION:<br>编写一个路由<code>&#39;/form&#39;</code>来管理HTML表单的input<code>&lt;form&gt;&lt;input name=&quot;str&quot;/&gt;&lt;/form&gt;)</code>并且打印出str的值。<br>TIPS:<br>处理post请求使用<code>post()</code>方法和<code>get()</code>方法类似。<br>Express.js用中间层来对的web server提供额外的功能。简言之，在你自己处理请求前中间层就是函数的调用。中间层提供了种类繁多的功能，例如logging,serving,static files以及error handling。在应用中用<code>use()</code>来添加中间层和转化中间层为参数。<br>Express.js用<code>body-parser</code>这个模块中的<code>urlencoded()</code>作为中间层来转化请求中的<code>x-www-form-urlencoded</code></p>
-<pre><code>var bodyparser = require(&apos;body-parser&apos;)
-app.use(bodyparser.urlencoded({extended: false}))
-</code></pre><p>我们可以这样翻转字符串  </p>
-<pre><code>req.body.str.split(&apos;&apos;).reverse().join(&apos;&apos;)       
-</code></pre><p>good.js:  </p>
-<pre><code>var express = require(&quot;express&quot;);
-var bodyParser = require(&quot;body-parser&quot;);
-var app = express();
-app.use(bodyParser.urlencoded({extended: false}));
-app.post(&apos;/form&apos;, function(req, res) {
-    var str = req.body.str.split(&apos;&apos;).reverse().join(&apos;&apos;);
-    res.end(str);
-});
-app.listen(process.argv[2]);
-</code></pre><p>5.<strong>STYLISH CSS</strong><br>QUESTION:<br>Style your HTML from previous example with some Stylus middleware.</p>
-<p>Your solution must listen on the port number supplied by process.argv[2].</p>
-<p>The path containing the HTML and Stylus files is provided in process.argv[3]<br>(they are in the same directory).<br>TIPS:<br>To plug-in stylus someone can use this middleware:</p>
-<pre><code>app.use(require(&apos;stylus&apos;).middleware(__dirname + &apos;/public&apos;));
-</code></pre><p>Remember that you need also to serve static files.<br>stylish.js  </p>
-<pre><code>var express = require(&apos;express&apos;);
-var stylus = require(&quot;stylus&quot;);
-
-var app = express();
-app.use(stylus.middleware(process.argv[3]));
-app.use(express.static(process.argv[3]));
-
-app.listen(process.argv[2]);
-</code></pre><p>6.<strong>PARAM PAM PAM</strong><br>QUESTION:<br>Create an Express.js server that processes PUT ‘/message/:id’ requests.For instance:</p>
-<pre><code>PUT /message/526aa677a8ceb64569c9d4fb
-</code></pre><p>TIPS:<br>As a response to these requests, return the SHA1 hash of the current date<br>plus the sent ID:</p>
-<pre><code>require(&apos;crypto&apos;)
-  .createHash(&apos;sha1&apos;)
-  .update(new Date().toDateString() + id)
-  .digest(&apos;hex&apos;) 
-</code></pre><p>To handle PUT requests use:</p>
-<pre><code>app.put(&apos;/path/:NAME&apos;, function(req, res){...});
-</code></pre><p>To extract parameters from within the request handlers, use:</p>
-<pre><code>req.params.NAME
-</code></pre><p>pam.js  </p>
-<pre><code>var express= require(&quot;express&quot;);
-var crypto = require(&quot;crypto&quot;);
-var app = express();
-
-app.put(&apos;/message/:NAME&apos;, function(req, res){
-    var id = req.params.NAME;
-    res.send(crypto
-        .createHash(&apos;sha1&apos;)
-        .update(new Date().toDateString() + id)
-        .digest(&apos;hex&apos;))
-})
-app.listen(process.argv[2])  
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1153,7 +1069,7 @@ app.listen(process.argv[2])
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1161,7 +1077,7 @@ app.listen(process.argv[2])
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1170,7 +1086,7 @@ app.listen(process.argv[2])
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
