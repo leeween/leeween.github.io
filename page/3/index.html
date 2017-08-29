@@ -234,6 +234,138 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/16/xampp&mysql/" itemprop="url">
+                  xampp和MySQL配置环境时遇到的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-16T09:36:18+08:00" content="2016-05-16">
+              2016-05-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/后台/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/16/xampp&mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/xampp&mysql/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="xampp和MySQL配置环境时遇到的问题"><a href="#xampp和MySQL配置环境时遇到的问题" class="headerlink" title="xampp和MySQL配置环境时遇到的问题"></a>xampp和MySQL配置环境时遇到的问题</h3><p>查看端口被占用  </p>
+<pre><code>netstat -ano|findstr &quot;&lt;端口号&gt;&quot;  
+</code></pre><blockquote>
+<p>access forbidden<br>you don’t have permission to access the requested directory</p>
+</blockquote>
+<p>在xampp\apache\conf\httpd.conf中的<code>&lt;Directory&gt; blocks below.</code>下面加入</p>
+<pre><code>&lt;Directory /&gt;
+    AllowOverride none
+    Require all denied
+&lt;/Directory&gt;  
+</code></pre><p>在navicat中运行sql文件时报错</p>
+<blockquote>
+<p>MySQL Error 2013: Lost connection to MySQL server during query  </p>
+</blockquote>
+<p>在my.ini文件中<code>The MySQL server</code>下面增加  </p>
+<pre><code>wait_timeout=86400
+interactive_timeout=86400 
+</code></pre><p>并将<code>max_allowed_packet = 16M</code> 改为 <code>max_allowed_packet = 500M</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/16/express/" itemprop="url">
                   nodejs学习笔记(3)——express
                 </a>
@@ -1203,155 +1335,6 @@ aliases: dist-tags
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/27/Basic Algorithm Scripting/" itemprop="url">
-                  Freecodecamp——Basic Algorithm Scripting总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-27T22:54:19+08:00" content="2016-04-27">
-              2016-04-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/27/Basic Algorithm Scripting/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/27/Basic Algorithm Scripting/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="string方法"><a href="#string方法" class="headerlink" title="string方法"></a>string方法</h3><hr>
-<p><code>string.charCodeAt(pos)</code>返回string中的pos位置处的字符的字符码位。  </p>
-<pre><code>var str = &quot;JonSnow&quot;;  
-var initial = str.charCodeAt(0);  //initial=74  
-</code></pre><p><code>String.fromCharCode(char...)</code>根据一串数字编码返回一个字符串。  </p>
-<pre><code>var a = String.fromCharCode(67, 97, 116);//a是&quot;Cat&quot;  
-</code></pre><p><code>string.split(separator, limit)</code>分割成片段来返回一个字符串数组，limit为可选参数可以限制分割片段数量，separator参数可以使字符串或正则表达式。  </p>
-<pre><code>var str = &quot;Tyrion&quot;;  
-var arr1 = str.split(&quot;&quot;); // [&quot;T&quot;, &quot;y&quot;, &quot;r&quot;, &quot;i&quot;, &quot;o&quot;, &quot;n&quot;]
-var arr2 = str.split(&quot; &quot;); // [&quot;Tyrion&quot;]  
-var arr3 = str.split(&quot;&quot;, 2); // [&quot;T&quot;, &quot;y&quot;]  
-</code></pre><p><code>string.replace(searchValue, replaceValue)</code>对<code>string</code>进行查找和替换操作，并返回一个新的操作符，参数searchValue可以是一个字符串和正则表达式对象，如果是一个字符串，那么replaceValue只会在第一次出现的地方进行替换，如果是一个正则表达式并且带有g标示则会替换所有，如果没有带g标示，这只会替换第一个。</p>
-<pre><code>var str = &quot;A man, a plan, a canal. Panama&quot;;
-var result = str.replace(&quot;.&quot;, &quot;-&quot;); //&quot;ab-cd.ef&quot;
-</code></pre><p><code>string.slice(start, end)</code>返回一个新的字符串，参数为前闭后开，如果start为负数，则与<code>string.length</code>相加，end参数可选，默认值为<code>string.length</code>。</p>
-<pre><code>var str = &quot;Turn into something beautiful&quot;;
-var a = str.slice(0, 4); //&quot;Turn&quot;
-var b = str.slice(20); //&quot;beautiful&quot;
-var c = str.slice(-15, 20); //&quot;thing&quot;
-</code></pre><h3 id="array方法"><a href="#array方法" class="headerlink" title="array方法"></a>array方法</h3><hr>
-<p><code>array.reverse()</code>反转数组内容的顺序。  </p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var b = a.reverse(); //[&quot;3&quot;, &quot;2&quot;, &quot;1&quot;]
-</code></pre><p><code>arry.join(separator)</code>把array构造成一个字符串。首先把array中的每个元素构造成一个字符串，接着用一个separator分隔符把他们连在一起。  </p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var c = a.join(&quot;&quot;); //&quot;123&quot;
-var d = a.join(&quot;-&quot;); //1-2-3
-</code></pre><p><code>array.slice(start, end)</code>对array中的一段做浅复制，首先复制array[start],一直复制到array[end]为止。end参数可选，默认值为array.length。</p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var b = a.slice(0, 1); //[&quot;1&quot;]
-var c = a.slice(1); //[&quot;2&quot;, &quot;3&quot;]
-var d = a.slice(-2); //[&quot;2&quot;, &quot;3&quot;]
-</code></pre><p><code>array.splice(start, deleteCount, item...)</code>从array中移除一个或多个元素，并用新的item替换它们。参数start是从移除的元素开始，deleteCount是要移除的个数。</p>
-<pre><code>var a = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
-var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &quot;4&quot;, &quot;5&quot;, &quot;3&quot;]  b为[&quot;2&quot;]
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1397,7 +1380,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1414,7 +1397,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

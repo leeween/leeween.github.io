@@ -234,6 +234,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/29/delete-operator/" itemprop="url">
+                  一道题目看delete操作符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-29T18:59:32+08:00" content="2016-06-29">
+              2016-06-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/碎片知识/" itemprop="url" rel="index">
+                    <span itemprop="name">碎片知识</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/29/delete-operator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/delete-operator/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一道题目：</p>
+<pre><code>(function(x){
+    delete x;
+    return x;
+})(1);
+</code></pre><p>由于delete操作符没有起作用，最后返回的结果是1。<br>因为平常很少用到delete这个属性，所以这里写下加深一下印象。</p>
+<blockquote>
+<p>delete运算符可以用来删除对象的属性。如果对象包含该属性，那么该属性就会被移除。他不会触及原型链中的任何对象。</p>
+</blockquote>
+<p>值得注意的是：</p>
+<pre><code>x = 1;  // 隐式声明的全局变量
+var y = 2;  // 显式声明的全局变量
+
+delete x;  // true
+delete y;  // false
+</code></pre><p>可以使用delete操作符来删除一个隐式声明的全局变量,也就是没有使用 var 定义的全局变量.隐式声明的全局变量其实是global对象(window)的属性。</p>
+<p>不能删除从对象从原型所继承过来的属性</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/19/input的border-color属性/" itemprop="url">
                   input的border-color属性
                 </a>
@@ -892,138 +1023,6 @@ var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/16/xampp&mysql/" itemprop="url">
-                  xampp和MySQL配置环境时遇到的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-16T09:36:18+08:00" content="2016-05-16">
-              2016-05-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/后台/" itemprop="url" rel="index">
-                    <span itemprop="name">后台</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/16/xampp&mysql/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/xampp&mysql/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="xampp和MySQL配置环境时遇到的问题"><a href="#xampp和MySQL配置环境时遇到的问题" class="headerlink" title="xampp和MySQL配置环境时遇到的问题"></a>xampp和MySQL配置环境时遇到的问题</h3><p>查看端口被占用  </p>
-<pre><code>netstat -ano|findstr &quot;&lt;端口号&gt;&quot;  
-</code></pre><blockquote>
-<p>access forbidden<br>you don’t have permission to access the requested directory</p>
-</blockquote>
-<p>在xampp\apache\conf\httpd.conf中的<code>&lt;Directory&gt; blocks below.</code>下面加入</p>
-<pre><code>&lt;Directory /&gt;
-    AllowOverride none
-    Require all denied
-&lt;/Directory&gt;  
-</code></pre><p>在navicat中运行sql文件时报错</p>
-<blockquote>
-<p>MySQL Error 2013: Lost connection to MySQL server during query  </p>
-</blockquote>
-<p>在my.ini文件中<code>The MySQL server</code>下面增加  </p>
-<pre><code>wait_timeout=86400
-interactive_timeout=86400 
-</code></pre><p>并将<code>max_allowed_packet = 16M</code> 改为 <code>max_allowed_packet = 500M</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1069,7 +1068,7 @@ interactive_timeout=86400
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1086,7 +1085,7 @@ interactive_timeout=86400
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
