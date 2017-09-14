@@ -1,0 +1,1240 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webpack," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="之前经常使用vue-cli去构建一个vue应用，但是很少单独使用webpack，所以打算系统性的学习一下webpack。  
+webpack核心概念
+entry 一个可执行模块或库的入口文件。
+chunk 多个文件组成的一个代码块，例如把一个可执行模块和它所有依赖的模块组合和一个 chunk 这体现了webpack的打包机制。
+loader 文件转换器，例如把es6转换为es5，scss转换为cs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack从0搭建学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/09/14/webpack/index.html">
+<meta property="og:site_name" content="RunInWeb">
+<meta property="og:description" content="之前经常使用vue-cli去构建一个vue应用，但是很少单独使用webpack，所以打算系统性的学习一下webpack。  
+webpack核心概念
+entry 一个可执行模块或库的入口文件。
+chunk 多个文件组成的一个代码块，例如把一个可执行模块和它所有依赖的模块组合和一个 chunk 这体现了webpack的打包机制。
+loader 文件转换器，例如把es6转换为es5，scss转换为cs">
+<meta property="og:updated_time" content="2017-09-14T14:11:50.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack从0搭建学习笔记">
+<meta name="twitter:description" content="之前经常使用vue-cli去构建一个vue应用，但是很少单独使用webpack，所以打算系统性的学习一下webpack。  
+webpack核心概念
+entry 一个可执行模块或库的入口文件。
+chunk 多个文件组成的一个代码块，例如把一个可执行模块和它所有依赖的模块组合和一个 chunk 这体现了webpack的打包机制。
+loader 文件转换器，例如把es6转换为es5，scss转换为cs">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> webpack从0搭建学习笔记 | RunInWeb </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac53b88e7c353a0bf5d189d83c4804b4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RunInWeb</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Quick notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                webpack从0搭建学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-14T22:11:59+08:00" content="2017-09-14">
+              2017-09-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/09/14/webpack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/14/webpack/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前经常使用vue-cli去构建一个vue应用，但是很少单独使用webpack，所以打算系统性的学习一下webpack。  </p>
+<h3 id="webpack核心概念"><a href="#webpack核心概念" class="headerlink" title="webpack核心概念"></a>webpack核心概念</h3><ul>
+<li><code>entry</code> 一个可执行模块或库的入口文件。</li>
+<li><code>chunk</code> 多个文件组成的一个代码块，例如把一个可执行模块和它所有依赖的模块组合和一个 <code>chunk</code> 这体现了webpack的打包机制。</li>
+<li><code>loader</code> 文件转换器，例如把es6转换为es5，scss转换为css。</li>
+<li><code>plugin</code> 插件，用于扩展webpack的功能，在webpack构建生命周期的节点上加入扩展hook为webpack加入功能。</li>
+</ul>
+<h3 id="webpack构建流程"><a href="#webpack构建流程" class="headerlink" title="webpack构建流程"></a>webpack构建流程</h3><p>从启动webpack构建到输出结果经历了一系列过程，它们是：  </p>
+<ul>
+<li>解析webpack配置参数，合并从shell传入和<code>webpack.config.js</code>文件里配置的参数，生产最后的配置结果。</li>
+<li>注册所有配置的插件，好让插件监听webpack构建生命周期的事件节点，以做出对应的反应。</li>
+<li>从配置的<code>entry</code>入口文件开始解析文件构建AST语法树，找出每个文件所依赖的文件，递归下去。</li>
+<li>在解析文件递归的过程中根据文件类型和loader配置找出合适的loader用来对文件进行转换。</li>
+<li>递归完后得到每个文件的最终结果，根据<code>entry</code>配置生成代码块<code>chunk</code>。</li>
+<li>输出所有<code>chunk</code>到文件系统。  </li>
+</ul>
+<p>需要注意的是，在构建生命周期中有一系列插件在合适的时机做了合适的事情，比如<code>UglifyJsPlugin</code>会在loader转换递归完后对结果再使用<code>UglifyJs</code>压缩覆盖之前的结果。  </p>
+<p>以上内容都是摘抄    </p>
+<hr>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>安装配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir webpack &amp;&amp; cd webpack</span><br><span class="line">npm init -y</span><br><span class="line">cnpm install webpack --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>因为webpack需要配置参数，默认文件为<code>webpack.config.js</code>，因此，我们新建<code>webpack.config.js</code>文件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch webpack.config.js</span><br></pre></td></tr></table></figure>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><blockquote>
+<p>webpack 配置的本质就是：一个配置的 Object。  </p>
+</blockquote>
+<p>因此有两种使用方法配置 webpack:</p>
+<ul>
+<li>一种是 Cli（即 Command Line Interface）方法：读取 <code>webpack.config.js</code> 文件；</li>
+<li>另一种是 Node.js API 的方法：传递配置对象作为参数。  </li>
+</ul>
+<p>前端一般是使用第一种，即配置 <code>webpack.config.js</code> 文件：  </p>
+<pre><code>const path = require(&apos;path&apos;);
+
+module.exports = {
+    // 还有以下两种方式
+    // entry: [&quot;./src/entry1&quot;, &quot;./src/entry2&quot;],
+    // entry: &quot;./src/entry&quot;
+    entry: {
+        index: &apos;./src/main.js&apos;
+    },
+    output: {
+        path: path.resolve(__dirname, &apos;dist&apos;),
+        // filename: &quot;bundle.js&quot;, // string
+        // filename: &quot;[name].js&quot;, // 用于多个入口点(entry point)（出口点？）
+        // filename: &quot;[chunkhash].js&quot;, // 用于长效缓存
+        // 「入口分块(entry chunk)」的文件名模板（出口分块？）
+        filename: &apos;js/[name].bundle.js&apos;
+    }
+}
+</code></pre><p>如上所示，设置文件入口entry，和文件出口output。我们在根目录下新建<code>src/main.js</code>  </p>
+<pre><code>//main.js
+console.log(&apos;hello, webpack&apos;);
+</code></pre><p>执行命令<code>webpack</code>，可以看到在根目录下生成了<code>dist/js/index.bundle.js</code>  </p>
+<p>但是，这样只是打包了js文件，下面我们生成一个html文件来动态引入上面生成的js文件。  </p>
+<h3 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h3><blockquote>
+<p>webpack 有着丰富的插件接口(rich plugin interface)。webpack 自身的多数功能都使用这个插件接口。这个插件接口使 webpack 变得极其灵活。  </p>
+</blockquote>
+<h4 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h4><p>这里使用<code>html-webpack-plugin</code>插件，首先安装  </p>
+<pre><code>cnpm install html-webpack-plugin --save-dev
+</code></pre><p>在webpack.config.js文件中引入插件，修改如下</p>
+<pre><code>const path = require(&apos;path&apos;);
+const htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
+module.exports = {
+    ...
+    plugins: [
+        new htmlWebpackPlugin({
+            filename: &apos;index.html&apos;, //最终生成的存放路径，相对于outpu的path
+            template: &apos;index.html&apos;, //模板文件
+            inject: true, //js插入的位置，true/&apos;head&apos;/&apos;body&apos;/false
+            hash: true, //为静态资源生成hash值
+            chunks: [&apos;vendors&apos;, &apos;index&apos;], //需要引入的chunk，不配置就会引入所有页面的资源
+            minify: { //压缩HTML文件    
+                removeComments: true, //移除HTML中的注释
+                collapseWhitespace: false //删除空白符与换行符
+            }
+        })
+    ]
+}
+</code></pre><p>因为在上方配置中我们引入了模板文件index.html，所以我们在根目录下新建最基本html文件，然后执行<code>webpack</code>，我们发现dist目录下新生成了一个index.html文件，而且引入了同时打包生成的js文件，用浏览器打开发现console栏打印了我们main.js里的内容。  </p>
+<h4 id="热更新"><a href="#热更新" class="headerlink" title="热更新"></a>热更新</h4><p>如果修改内容后每次都要去使用<code>webpack</code>命令去打包，然后按f5刷新浏览器再看修改效果，这样太麻烦，我们使用热更新。  </p>
+<p>首先安装</p>
+<pre><code>cnpm install webpack-dev-server --save-dev
+</code></pre><p>在webpack.config.js文件中引入插件，修改如下</p>
+<pre><code>const webpack = require(&apos;webpack&apos;);
+const path = require(&apos;path&apos;);
+const htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
+module.exports = {
+    ...
+    plugins: [
+        ...
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: &apos;./dist&apos;,
+        // port: 9090, //如果不指定默认为8080，并且每次重启会+1
+        inline: true, //可以监控js变化
+        hot: true  //开启服务 热更新
+    }
+}
+</code></pre><p>方便操作，修改package.json文件：</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server --open --progress --colors&quot;
+}
+</code></pre><p>其中的dev为我们新增，后面的参数分别为  </p>
+<ul>
+<li><code>--open</code> 使用默认浏览器打开url</li>
+<li><code>--progress</code> 显示打包进度</li>
+<li><code>--colors</code> 给部分输出文字加上颜色，方便观看</li>
+</ul>
+<p>关于webpack-dev-server更详细的配置可看<a href="http://webpack.github.io/docs/webpack-dev-server.html#webpack-dev-server-cli" target="_blank" rel="external">webpack-dev-server CLI</a>  </p>
+<p>这样执行命令<code>npm run dev</code>，就可以看到默认浏览器打开了<code>http://loacalhost:8080</code>，并且每次修改css，js等文件会实时更新，解放了每次打包和刷新的麻烦。  </p>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><blockquote>
+<p>webpack 通过 loader 可以支持各种语言和预处理器编写模块。loader 描述了 webpack 如何处理 非 JavaScript(non-JavaScript) 模块，并且在bundle中引入这些依赖。</p>
+</blockquote>
+<h4 id="css与sass"><a href="#css与sass" class="headerlink" title="css与sass"></a>css与sass</h4><p>上文中，最终的dist/index.html是根据模板文件index.html所生成的，并且动态加入了生成的js文件，那么css文件应该怎样动态加入？需要用到各种loader。    </p>
+<p>首先在src目录下新建src/css/main.css </p>
+<pre><code>div {
+    color: red;
+}
+</code></pre><p>在模板文件index.html中加入</p>
+<pre><code>&lt;div&gt;test&lt;/div&gt;
+</code></pre><p>想要动态加载css，首先安装</p>
+<pre><code>cnpm install css-loader style-loader --save-dev
+</code></pre><p>修改配置文件  </p>
+<pre><code>...
+module.exports = {
+    ...
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    &apos;css-loader&apos;, //用于解析
+                    &apos;style-loader&apos; //将解析后的样式嵌入js代码
+                ]
+            }
+        ]
+    }
+}
+</code></pre><p>文件都配置好了，但是还没有引入css文件，所以在文件入口main.js中引入该css文件</p>
+<pre><code>import &apos;./css/main.css&apos;;
+</code></pre><p>这时查看浏览器发现样式已经被动态的加到html文件里的style标签里面，但是，有时候我们需要css文件为单独的文件，并不是内嵌到html里面。  </p>
+<p>首先安装插件 extract-text-webpack-plugin</p>
+<pre><code>cnpm install --save-dev extract-text-webpack-plugin
+</code></pre><p>修改配置文件  </p>
+<pre><code>...
+const ExtractTextPlugin = require(&apos;extract-text-webpack-plugin&apos;);
+...
+module.exports = {
+    ...
+    plugins: [
+        ...
+        new ExtractTextPlugin(&quot;[name]-[hash].css&quot;)
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract([&apos;css-loader&apos;])
+            }
+        ]
+    }
+}
+</code></pre><p>可以看到我们的css已经被单独提出来了。但是，实际开发中我们需要对浏览器的兼容性做处理。这时我们需要用到postcss。</p>
+<p>首先安装插件</p>
+<pre><code>cnpm install --save-dev postcss-loader autoprefixer
+</code></pre><p>新建postcss.config.js</p>
+<pre><code>module.exports = {
+    plugins : [
+        require(&apos;autoprefixer&apos;)({
+            browsers : [&apos;last 5 versions&apos;]
+        })
+    ]
+}
+</code></pre><p>修改配置文件</p>
+<pre><code>module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract([&apos;css-loader&apos;, &apos;postcss-loader&apos;])
+            }
+        ]
+    }
+}
+</code></pre><p>开发时，需要使用sass<br>首先安装插件</p>
+<pre><code>cnpm install sass-loader node-sass --save-dev
+</code></pre><p>修改配置文件</p>
+<pre><code>module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract([&apos;css-loader&apos;, &apos;postcss-loader&apos;])
+            },
+            {
+                test: /\.scss$/,
+                // sass-loader要在css-loader之后
+                use: ExtractTextPlugin.extract([&apos;css-loader&apos;, &apos;postcss-loader&apos;, &apos;sass-loader&apos;])
+            }
+        ]
+    }
+}
+</code></pre><p>按照上述修改后，可以无痛sass开发了，但是发现个问题，此时浏览器并没有实时更新了，经过各种查找把<code>hot: true</code>屏蔽即可，原因未知</p>
+<h4 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h4><p>首先安装插件</p>
+<pre><code>cnpm install --save-dev babel-loader babel-core babel-preset-env
+</code></pre><p>修改配置文件</p>
+<pre><code>module.exports = {
+    module: {
+        rules: [
+            ...
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: &apos;babel-loader&apos;,
+                    options: {
+                        presets: [&apos;env&apos;]
+                    }
+                }
+            }
+        ]
+    }
+}
+</code></pre><h4 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h4><p>首先安装插件</p>
+<pre><code>cnpm install --save-dev url-loader
+</code></pre><p>修改配置文件</p>
+<pre><code>module.exports = {
+    module: {
+        rules: [
+            ...
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: &apos;url-loader&apos;,
+                options: {
+                    limit: 10000,
+                    name: &apos;assets/[hash].[ext]&apos;
+                }
+            }
+        ]
+    }
+}
+</code></pre><p>但是，上述方案只能对css中的图片进行处理，我们还需要对html中的img标签进行处理  </p>
+<pre><code>cnpm install --save-dev html-withimg-loader
+</code></pre><p>修改配置文件</p>
+<pre><code>module.exports = {
+    module: {
+        rules: [
+            ...
+            {
+                test: /\.(htm|html)$/i,
+                loader: &apos;html-withimg-loader&apos; //处理html中的img标签
+            }
+        ]
+    }
+}
+</code></pre><p>好了，上述可以满足平常的基本开发了。  </p>
+<p>如果需要多页面开发的话，则在插件中new一个新的htmlWebpackPlugin插件。  </p>
+<pre><code>...
+entry: {
+    index: &apos;./src/main.js&apos;,
+    a: &apos;./src/a.js&apos;
+},
+...
+plugins: [
+    ...
+    new htmlWebpackPlugin({
+        filename: &apos;a.html&apos;, //最终生成的存放路径，相对于outpu的path
+        template: &apos;a.html&apos;, //模板文件
+        inject: true, //js插入的位置，true/&apos;head&apos;/&apos;body&apos;/false
+        hash: true, //为静态资源生成hash值
+        chunks: [&apos;vendors&apos;, &apos;a&apos;], //需要引入的chunk，不配置就会引入所有页面的资源
+        minify: { //压缩HTML文件
+            removeComments: true, //移除HTML中的注释
+            collapseWhitespace: false //删除空白符与换行符
+        }
+    }),
+    ...
+]
+...
+</code></pre><p>该页面的入口为a.js，并且设置chunks只引入需要的。   </p>
+<hr>
+<p>最终的package.json和webpack.config.js和postcss.config.js文件分别如下</p>
+<p><strong>package.json</strong></p>
+<pre><code>{
+  &quot;name&quot;: &quot;webpack&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server --open --progress --colors --content-base&quot;,
+    &quot;build&quot;: &quot;webpack --progress --colors&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;autoprefixer&quot;: &quot;^7.1.4&quot;,
+    &quot;babel-core&quot;: &quot;^6.26.0&quot;,
+    &quot;babel-loader&quot;: &quot;^7.1.2&quot;,
+    &quot;babel-preset-env&quot;: &quot;^1.6.0&quot;,
+    &quot;css-loader&quot;: &quot;^0.28.7&quot;,
+    &quot;extract-text-webpack-plugin&quot;: &quot;^3.0.0&quot;,
+    &quot;html-webpack-plugin&quot;: &quot;^2.30.1&quot;,
+    &quot;html-withimg-loader&quot;: &quot;^0.1.16&quot;,
+    &quot;node-sass&quot;: &quot;^4.5.3&quot;,
+    &quot;postcss-loader&quot;: &quot;^2.0.6&quot;,
+    &quot;sass-loader&quot;: &quot;^6.0.6&quot;,
+    &quot;style-loader&quot;: &quot;^0.18.2&quot;,
+    &quot;url-loader&quot;: &quot;^0.5.9&quot;,
+    &quot;webpack&quot;: &quot;^3.5.6&quot;,
+    &quot;webpack-dev-server&quot;: &quot;^2.8.1&quot;
+  }
+}
+</code></pre><p><strong>postcss.config.js</strong></p>
+<pre><code>module.exports = {
+    plugins : [
+        require(&apos;autoprefixer&apos;)({
+            browsers : [&apos;last 5 versions&apos;]
+        })
+    ]
+}
+</code></pre><p><strong>webpack.config.js</strong></p>
+<pre><code>const webpack = require(&apos;webpack&apos;);
+const path = require(&apos;path&apos;);
+const htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
+/*
+extract-text-webpack-plugin插件，
+有了它就可以将你的样式提取到单独的css文件里，
+妈妈再也不用担心样式会被打包到js文件里了。
+ */
+const ExtractTextPlugin = require(&apos;extract-text-webpack-plugin&apos;);
+
+module.exports = {
+    // 还有以下两种方式
+    // entry: [&quot;./src/entry1&quot;, &quot;./src/entry2&quot;],
+    // entry: &quot;./src/entry&quot;
+    entry: {
+        index: &apos;./src/main.js&apos;,
+        a: &apos;./src/a.js&apos;
+    },
+    output: {
+        path: path.resolve(__dirname, &apos;dist&apos;),
+        // filename: &quot;bundle.js&quot;, // string
+        // filename: &quot;[name].js&quot;, // 用于多个入口点(entry point)（出口点？）
+        // filename: &quot;[chunkhash].js&quot;, // 用于长效缓存
+        // 「入口分块(entry chunk)」的文件名模板（出口分块？）
+        filename: &apos;js/[name].bundle.js&apos;
+    },
+    devServer: {
+        contentBase: &apos;./dist&apos;,
+        // port: 9090,
+        inline: true, //可以监控js变化
+        // hot: true  //开启服务 热更新
+    },
+    plugins: [
+        new htmlWebpackPlugin({
+            filename: &apos;index.html&apos;, //最终生成的存放路径，相对于outpu的path
+            template: &apos;index.html&apos;, //模板文件
+            inject: true, //js插入的位置，true/&apos;head&apos;/&apos;body&apos;/false
+            hash: true, //为静态资源生成hash值
+            chunks: [&apos;vendors&apos;, &apos;index&apos;], //需要引入的chunk，不配置就会引入所有页面的资源
+            minify: { //压缩HTML文件
+                removeComments: true, //移除HTML中的注释
+                collapseWhitespace: false //删除空白符与换行符
+            }
+        }),
+        new htmlWebpackPlugin({
+            filename: &apos;a.html&apos;, //最终生成的存放路径，相对于outpu的path
+            template: &apos;a.html&apos;, //模板文件
+            inject: true, //js插入的位置，true/&apos;head&apos;/&apos;body&apos;/false
+            hash: true, //为静态资源生成hash值
+            chunks: [&apos;vendors&apos;, &apos;a&apos;], //需要引入的chunk，不配置就会引入所有页面的资源
+            minify: { //压缩HTML文件
+                removeComments: true, //移除HTML中的注释
+                collapseWhitespace: false //删除空白符与换行符
+            }
+        }),
+        new ExtractTextPlugin(&quot;css/[name].css&quot;),
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    module: {
+        rules: [
+            // {
+            //     test: /\.css$/,
+            //     use: [
+            //         &apos;css-loader&apos;, //用于解析
+            //         &apos;style-loader&apos; //将解析后的样式嵌入js代码
+            //         // {
+            //         //     loader: &apos;css-loader&apos;,
+            //         //     options: {
+            //         //         importLoaders: 1
+            //         //     }
+            //         // },
+            //         // &apos;postcss-loader&apos; // 使用autoprefix
+            //     ]
+            // }
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract([&apos;css-loader&apos;, &apos;postcss-loader&apos;])
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract([&apos;css-loader&apos;, &apos;postcss-loader&apos;, &apos;sass-loader&apos;])
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: &apos;babel-loader&apos;,
+                    options: {
+                        presets: [&apos;env&apos;]
+                    }
+                }
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: &apos;url-loader&apos;,
+                options: {
+                    limit: 10000,
+                    name: &apos;assets/[hash].[ext]&apos;
+                }
+            },
+            {
+                test: /\.(htm|html)$/i,
+                loader: &apos;html-withimg-loader&apos; //处理html中的img标签
+            }
+        ]
+    }
+}
+</code></pre><p>剩下的还有很多未完成的可以查看 <a href="https://webpack.js.org/" target="_blank" rel="external">webpack官方文档</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/webpack/" rel="tag">#webpack</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/08/29/css学习分享杂记/" rel="next" title="css学习分享杂记">
+                <i class="fa fa-chevron-left"></i> css学习分享杂记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/14/webpack/"
+           data-title="webpack从0搭建学习笔记" data-url="http://yoursite.com/blog/2017/09/14/webpack/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/imgs/avatar.png"
+               alt="leeween" />
+          <p class="site-author-name" itemprop="name">leeween</p>
+          <p class="site-description motion-element" itemprop="description">go!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/leeween" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/leshiv5" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack核心概念"><span class="nav-number">1.</span> <span class="nav-text">webpack核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack构建流程"><span class="nav-number">2.</span> <span class="nav-text">webpack构建流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">3.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">4.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugins"><span class="nav-number">5.</span> <span class="nav-text">Plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html-webpack-plugin"><span class="nav-number">5.1.</span> <span class="nav-text">html-webpack-plugin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#热更新"><span class="nav-number">5.2.</span> <span class="nav-text">热更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#module"><span class="nav-number">6.</span> <span class="nav-text">module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#css与sass"><span class="nav-number">6.1.</span> <span class="nav-text">css与sass</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#es6"><span class="nav-number">6.2.</span> <span class="nav-text">es6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片处理"><span class="nav-number">6.3.</span> <span class="nav-text">图片处理</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">leeween</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"runinweb"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>
