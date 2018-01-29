@@ -1274,8 +1274,8 @@ align-self
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/study-mongodb/" itemprop="url">
-                  学习MongoDB（一）
+                <a class="post-title-link" href="/2016/08/30/study-linux2/" itemprop="url">
+                  学习linux（二）
                 </a>
               
             
@@ -1288,8 +1288,8 @@ align-self
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T23:29:51+08:00" content="2017-02-16">
-              2017-02-16
+            <time itemprop="dateCreated" datetime="2016-08-30T00:49:35+08:00" content="2016-08-30">
+              2016-08-30
             </time>
           </span>
 
@@ -1302,8 +1302,8 @@ align-self
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
-                    <span itemprop="name">MongoDB</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -1318,8 +1318,8 @@ align-self
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/16/study-mongodb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/study-mongodb/" itemprop="commentsCount"></span>
+                <a href="/2016/08/30/study-linux2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/study-linux2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1343,58 +1343,107 @@ align-self
       
         
           
-            <h3 id="一、数据库"><a href="#一、数据库" class="headerlink" title="一、数据库"></a>一、数据库</h3><ul>
-<li>一个mongoDB可以创建多个数据库</li>
-<li>使用show dbs可以查看所有数据库的列表</li>
-<li>运行use命令可以连接到指定的数据库</li>
-<li>执行db命令则可以查看当前数据库对象或者集合  </li>
-</ul>
-<p>数据库的信息存储在集合中，他们统一使用系统的命名空间：DBNAME.system.*， 其中DBNAME可用db或数据库名替代</p>
+            <p>最近在<a href="http://t.imooc.com/learn/175" target="_blank" rel="external">慕课网</a>学习linux，写这个学习笔记主要是记录学习的过程，以及方便以后查询。  </p>
+<h2 id="三、文件搜索命令"><a href="#三、文件搜索命令" class="headerlink" title="三、文件搜索命令"></a>三、文件搜索命令</h2><p><strong>locate</strong>  </p>
+<pre><code>locate 文件名
+在后台数据库中按文件名搜索，搜索速度更快。
+</code></pre><p>locate所搜索的后台数据库为<code>/var/lib/mlocate</code>，每天自动更新，可以使用<code>updatedb</code>强制更新。<br><code>/etc/updatedb.conf</code>为其配置文件，其中  </p>
 <ul>
-<li>DBNAME.system.namespaces ：列出所有名字空间</li>
-<li>DBNAME.system.indexs ：列出所有索引</li>
-<li>DBNAME.system.profile ：列出数据库概要信息</li>
-<li>DBNAME.system.users ：列出访问数据库的用户</li>
-<li>DBNAME.system.sources ：列出服务器信息</li>
+<li>第一行表示开启搜索限制</li>
+<li>第二行表示搜索时，不搜索的文件系统</li>
+<li>第三行表示搜索时，不搜索的文件类型</li>
+<li>第四行表示搜索时，不搜索的路径   </li>
 </ul>
-<h3 id="二、数据库的创建和销毁"><a href="#二、数据库的创建和销毁" class="headerlink" title="二、数据库的创建和销毁"></a>二、数据库的创建和销毁</h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>启动服务后，进入 MongoDB 命令行操作界面：<br><code>$ mongo</code><br>使用 use 命令创建数据库：<br><code>&gt; use mydb</code><br>查看当前连接的数据库：<br><code>&gt; db</code><br>查看所有的数据库：<br><code>&gt; show dbs</code><br>列出的所有数据库中看不到 mydb或者显示mydb(empty) ，因为 mydb 为空，里面没有任何东西，MongoDB不显示或显示mydb(empty)。  </p>
-<h4 id="销毁"><a href="#销毁" class="headerlink" title="销毁"></a>销毁</h4><p>使用 db.dropDatabase() 销毁数据库：</p>
-<pre><code>&gt; use local
- switched to db local
-&gt; db.dropDatabase()
-</code></pre><p>查看所有的数据库：<br><code>&gt; show dbs</code>  </p>
-<h3 id="三、集合（collection）的创建和删除"><a href="#三、集合（collection）的创建和删除" class="headerlink" title="三、集合（collection）的创建和删除"></a>三、集合（collection）的创建和删除</h3><p>在数据库 mydb 中创建一个集合</p>
-<pre><code>&gt; use mydb
-switched to db mydb
-&gt; db.createCollection(&quot;users&quot;)
-</code></pre><p>查看创建的集合：</p>
-<p><code>&gt; show collections</code><br>删除集合的方法如下：（删除 users 集合）</p>
-<pre><code>&gt; show collections
-&gt; db.users.drop()
-</code></pre><p>查看是否删除成功：</p>
-<p><code>&gt; show collections</code></p>
-<p>向集合中插入数据使用<code>insert()</code>和<code>save()</code>  </p>
-<h3 id="四、数据查询"><a href="#四、数据查询" class="headerlink" title="四、数据查询"></a>四、数据查询</h3><p>find() 用法：<code>db.COLLECTION_NAME.find()</code>  </p>
-<p>查询数据，不加任何参数默认返回所有数据记录：<br><code>&gt; db.post.find()</code>   </p>
-<p>查询数据，不加任何参数默认返回所有数据记录：<br><code>&gt; db.post.find()</code>  </p>
-<h4 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h4><p>当 find() 中传入多个键值对时，MongoDB就会将其作为 AND 查询处理。用法：<code>db.COLLECTION_NAME.find({ key1: value1, key2: value2 }).pretty()</code>   </p>
-<h4 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h4><p>MongoDB中，OR 查询语句以 $or 作为关键词，用法如下：</p>
-<pre><code>&gt; db.post.find(
-   {
-      $or: [
-         {key1: value1}, {key2:value2}
-      ]
-   }
-).pretty()   
-</code></pre><h4 id="同时使用AND和OR"><a href="#同时使用AND和OR" class="headerlink" title="同时使用AND和OR"></a>同时使用AND和OR</h4><pre><code>&gt; db.post.find({
-    &quot;likes&quot;: {$gt:10},
-    $or: [
-        {&quot;by&quot;: &quot;shiyanlou&quot;},
-        {&quot;title&quot;: &quot;MongoDB Overview&quot;}
-    ]
-}).pretty()
-</code></pre><p>{\$gt:10} 表示大于10，另外，\$lt 表示小于，\$lte 表示小于等于，\$gte 表示大于等于，\$ne 表示不等于。</p>
+<p><strong>whereis</strong>  </p>
+<pre><code>whereis [选项] 命令名
+得到搜索命令所在路径及帮助文档所在位置
+-b  只查找可执行文件
+-m  只查找帮助文档
+</code></pre><p><strong>which</strong></p>
+<pre><code>which 命令名
+搜索命令所在路径及别名
+</code></pre><p><strong>find</strong>  </p>
+<pre><code>find [搜索范围] [搜索条件]
+find /root -name install.log         表示在/root中按name匹配到install.log
+find /root -iname install.log        忽略大小写
+find /root -user root                按照所有者搜索
+find /root -nouser                   搜索没有所有者的文件
 
+find /var/log/ -mtime +10            查找10天前修改的文件
+                atime                文件访问的时间
+                ctime                改变文件属性的时间
+                mtime                 修改文件内容的时间
+                      -10             10天内修改的文件
+                       10             10天当天修改的文件
+                      +10             10天前修改的文件
+
+find . size +25k                     查找当前目录文件大于25k的文件
+            -25k                                   小于
+             25k                                     等于
+
+find . inum 222222                     查找i节点为222222的文件
+
+find /etc -size +20k -a -size -50k  查找大于20k且小于50k的文件
+find /etc -size +20k -o -size -10k  查找大于20k或小于10k的文件     
+
+第一个命令 -exec 第二个命令 {} \;     对第一个命令得到的数据进行第二个命令操作
+find /etc -size +20k -a -size -50k -exec ls -lh {} \; 显示大于20k且小于50k的文件的详细信息
+</code></pre><p><strong>grep</strong>  </p>
+<pre><code>grep [选项] 字符串 文件名             在文件名中匹配符合条件的字符串
+     -i                               忽略大小写
+     -v                                 排除指定的字符串
+</code></pre><p><strong>find与grep的区别</strong><br>find命令主要是搜索符合条件的文件名，如果需要匹配，使用通配符，是完全匹配<br>grep命令主要是搜索符合条件的字符串，如果需要匹配，使用正则表达式进行匹配，是包含匹配。</p>
+<h2 id="四、帮助命令"><a href="#四、帮助命令" class="headerlink" title="四、帮助命令"></a>四、帮助命令</h2><p><strong>man</strong>  </p>
+<pre><code>man 命令                            该命令使用q退出
+命令 --help
+
+help shell内部命令
+wherris 命令                        确定是否为内部命令
+help 命令
+
+info 命令                           列出所有命令清单
+</code></pre><p><strong>压缩</strong>  </p>
+<pre><code>zip 压缩文件名 原文件                压缩文件
+zip -r 压缩文件名 原目录             压缩目录
+unzip 压缩文件
+
+gzip 原文件                         压缩为.gz的文件，原文件消失
+gzip -c 原文件 &gt; 压缩文件            保留原文件    
+gzip -r 目录                        压缩目录下的所有子文件
+gzip -d 压缩文件                     解压
+gunzip 压缩文件                     解压缩文件
+
+bzip2压缩不能压缩目录
+bzip2 源文件                        压缩不保留源文件
+bzip2 -k 源文件                     保留原文件
+bzip2 -dk 压缩文件                  解压缩-k保留压缩文件
+bunzip2 -k 压缩文件
+
+tar -cvf 打包文件名 源文件
+    -c 打包
+    -v 显示过程
+    -f 指定打包后的文件
+tar -xvf 打包文件名
+    -x   解打包
+tar -zcvf 压缩包名.tar.gz 源文件
+    -z   压缩为.tar.bz2格式
+tar -zxvf 压缩包名.tar.gz
+tar -jcvf 后缀为tar.bz2
+</code></pre><p><strong>关机与重启命令</strong>  </p>
+<pre><code>shutdown [选项] 时间
+         -c 取消到前一个关机命令
+         -h 关机
+         -r 重启
+
+halt
+poweroff
+init 0
+
+reboot
+init 6
+
+logout  养成退出登录的习惯
+</code></pre>
           
         
       
@@ -1422,7 +1471,7 @@ switched to db mydb
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1463,7 +1512,7 @@ switched to db mydb
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1471,7 +1520,7 @@ switched to db mydb
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1480,7 +1529,7 @@ switched to db mydb
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1538,7 +1587,7 @@ switched to db mydb
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -234,345 +234,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/12/mongodb/" itemprop="url">
-                  mongodb安装以及启动服务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T08:38:13+08:00" content="2016-05-12">
-              2016-05-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mongodb/" itemprop="url" rel="index">
-                    <span itemprop="name">mongodb</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/12/mongodb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/mongodb/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><p>首先安装mongodb，<a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">官方下载</a>，然后直接安装，获取安装文件夹bin所在目录将其添加到系统变量中。使用<code>mongod -v</code>来验证是否添加成功。<br>安装好mongodb后直接输入指令<code>mongo</code>会报错，<code>errno:10061 由于目标计算机积极拒绝，无法连接</code><br>原因在于未添加配置文件，步骤如下：<br>1.在所需文件夹下创建数据目录<code>mkdir data</code>，创建日志目录<code>mkdir log</code>;<br>2.使用mongo命令来启动数据服务<code>mongod --dbpath data --logpath log\mongod.log --logappend</code><br>语法为：   </p>
-<pre><code>mongod --dbpath $dbpath 
---logpath $logpath 
---logappend 
---fork
-</code></pre><p>3.在另一个终端中使用<code>mongo</code>来连接数据库  </p>
-<hr>
-<p>为了方便数据库的管理，我们可以将mongod命令添加到windows的系统服务中<br>安装数据库服务：  </p>
-<pre><code>mongod --dbpath &quot;C:\Users\Think\Desktop\nodejs+mongodb\data&quot; --logpath &quot;C:\Users\Think\Desktop\nodejs+mongodb\log\mongod.log&quot; --logappend --install --serviceName &quot;imooc&quot;  
-</code></pre><p>可以使用<code>net start imooc</code>命令来启动数据库服务，<code>net stop imooc</code>命令关闭数据库服务。<br>语法为： </p>
-<pre><code>mongod --dbpath &quot;$dbpath&quot;
---logpath &quot;$logpath&quot; --logappend
---install [remove]
---serviceName &quot;imooc&quot;
-
-net strat/stop imooc
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/07/node-study/" itemprop="url">
-                  nodejs学习笔记(1)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-07T23:16:59+08:00" content="2016-05-07">
-              2016-05-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/07/node-study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/node-study/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="freecodecamp之node学习笔记"><a href="#freecodecamp之node学习笔记" class="headerlink" title="freecodecamp之node学习笔记"></a><a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记</h1><hr>
-<h3 id="node安装"><a href="#node安装" class="headerlink" title="node安装"></a>node安装</h3><ol>
-<li><a href="https://nodejs.org/" title="nodejs官网" target="_blank" rel="external">nodejs官网</a> 直接下载LTS长期支持版本  </li>
-<li><code>node -v</code>查看nodejs版本号，<code>npm -v</code>查看npm版本号来确认是否安装成功。npm为nodejs包管理工具，安装nodejs会自动安装npm。  </li>
-</ol>
-<h3 id="Manage-Packages-with-NPM"><a href="#Manage-Packages-with-NPM" class="headerlink" title="Manage Packages with NPM"></a>Manage Packages with NPM</h3><blockquote>
-<p>内容出自<a href="https://github.com/npm/how-to-npm" target="_blank" rel="external">how-to-npm</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行  </p>
-</blockquote>
-<ol>
-<li>Install npm<br>安装npm: 　<code>npm install npm -g</code>，上面提到nodejs会自动安装npm，因此此处操作实为更新。  </li>
-<li>Dev Environment  </li>
-<li>Login<br>上述两步为新建开发文件夹以及模拟注册登录方便发布package  </li>
-<li><p>Start A Project<br><code>npm init</code> 引导你在当前文件夹下创建一个package.json文件，包括名称、版本、作者这些信息等，例如：</p>
-<pre><code>{
-  &quot;name&quot;: &quot;@lee/chat-example&quot;,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
-  &quot;main&quot;: &quot;server.js&quot;,
-  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
-  &quot;dependencies&quot;: {
-    &quot;async&quot;: &quot;~0.2.8&quot;,
-    &quot;express&quot;: &quot;~3.2.4&quot;,
-    &quot;socket.io&quot;: &quot;~0.9.14&quot;
-  },
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node server.js&quot;
-  },
-  &quot;devDependencies&quot;: {},
-  &quot;license&quot;: &quot;ISC&quot;
-}  
-</code></pre></li>
-<li><p>Install A Module<br><code>npm install &lt;modulename&gt;</code>,会在当前开发环境下下载module，如果加入参数 <code>-g</code> 则会在全局环境中安装该module，例如：<br><code>npm install @linclark/pkg</code>  </p>
-</li>
-<li><p>Listing Dependencies<br><code>npm ls</code>该命令可以查看项目中文件结构。如果按照上述步骤下来，此处会报错<code>npm ERR! extraneous: @linclark/pkg@1.0.2 /home/ubuntu/workspace/node_modules/@linclark/pkg</code>问题在于第五步，我们安装模块后并没有将其关联到项目中，因此我们需要在package.json中的dependencies添加依赖。运行<code>npm install @linclark/pkg --save</code>命令，此处<code>--save</code>代表安装该模块后再配置文件package.json文件中添加依赖，此时的package.json文件如下：  </p>
-<pre><code>{
-  &quot;name&quot;: &quot;leeween&quot;,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
-  &quot;main&quot;: &quot;server.js&quot;,
-  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
-  &quot;dependencies&quot;: {
-    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;,
-    &quot;async&quot;: &quot;~0.2.8&quot;,
-    &quot;express&quot;: &quot;~3.2.4&quot;,
-    &quot;socket.io&quot;: &quot;~0.9.14&quot;
-  },
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node server.js&quot;
-  },
-  &quot;devDependencies&quot;: {},
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;keywords&quot;: [
-    &quot;an&quot;,
-    &quot;example&quot;
-  ]
-}
-</code></pre></li>
-<li><p>npm Test<br>新建test.js文件，随便打印点东西 <code>console.log(&quot;good job&quot;)</code><br>并在package.json中的scripts中添加<code>&quot;test&quot;: &quot;node test.js&quot;</code>此时的package.json文件如下：</p>
-<pre><code>{
-  &quot;name&quot;: &quot;leeween&quot;,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
-  &quot;main&quot;: &quot;server.js&quot;,
-  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
-  &quot;dependencies&quot;: {
-    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;, 
-    &quot;async&quot;: &quot;~0.2.8&quot;,
-    &quot;express&quot;: &quot;~3.2.4&quot;,
-    &quot;socket.io&quot;: &quot;~0.9.14&quot;
-  },
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node server.js&quot;,
-    &quot;test&quot;: &quot;node test.js&quot;
-  },
-  &quot;devDependencies&quot;: {},
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;keywords&quot;: [
-    &quot;an&quot;,
-    &quot;example&quot;
-  ]
-}
-</code></pre><p>运行<code>node test.js</code> 会发现打印了good job  </p>
-</li>
-<li>Package Niceties<br>我们创建的package.json没有怎么填信息，所以当别人install下来的时候会直接懵逼，所以我们应该添加一个README.md文件来添加说明，最好将一下重要信息填在package.json中。  </li>
-<li>Publish<br><code>npm publish</code> 发布你的module，<code>npm view &lt;modulename&gt;</code>可以查看名为modulename的module内容，同时也可以检测该名称是否被用。  </li>
-<li>Version<br>npm中的每个package都拥有一个版本号，比如说1.2.3 其中3是指Patch version. Update for every change，2是指Minor version. Update for API additions，1是指Major version. Update for breaking API changes.<br><code>npm version &lt;versionnum&gt;</code>更新版本号至versionnum。  </li>
-<li>Dist Tag  </li>
-<li><p>Dist Tag Removal<br>how-to-npm中的11和12可能有bug，添加dist-tag一直404，官方<a href="https://github.com/npm/how-to-npm/issues/45" target="_blank" rel="external">github issue45</a>上也是似是而非，在此不做深究。语法如下： </p>
-<pre><code>npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;]
-npm dist-tag rm &lt;pkg&gt; &lt;tag&gt;
-npm dist-tag ls [&lt;pkg&gt;]
-
-aliases: dist-tags 
-</code></pre></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/04/27/Basic Algorithm Scripting/" itemprop="url">
                   Freecodecamp——Basic Algorithm Scripting总结
                 </a>
@@ -945,11 +606,128 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/08/new/" itemprop="url">
+                  the new blog
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-08T22:45:09+08:00" content="2016-03-08">
+              2016-03-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/杂记/" itemprop="url" rel="index">
+                    <span itemprop="name">杂记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/08/new/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/new/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上个博客由于太久没用忘记操作以及颜值不高被无情清理掉了，因此，今天对照教程重新弄了一个。<br>主要是因为最近在工作时发现有些以前看到过的东西长时间不使用差不多全部忘记了，因此弄这个博客最主要的原因是想把这里当做一个记录笔记的地方，方便以后自己查询. </p>
+<hr>
+<p>I hear Jerusalem bells a-ringing<br>听那耶路撒冷钟声传来<br>Roman Cavalry choirs are singing<br>罗马骑兵歌声震彻山海<br>Be my mirror my sword and shield<br>担当我的明镜，利剑和盾牌<br>My missionaries in a foreign field<br>我的传教士屹立边疆之外<br>For some reason I can not explain<br>只因一些缘由我无法释怀<br>I know Saint Peter won’t call my name<br>我亦知天堂之门不会为我敞开<br>Never an honest word<br>不再有逆耳忠言存在<br>But that was when I ruled the world<br>而这便是我统治的时代</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
   </nav>
 
 
@@ -990,7 +768,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -998,7 +776,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1007,7 +785,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1065,7 +843,7 @@ var b = a.splice(1, 1, &quot;4&quot;, &quot;5&quot;);  //a为[&quot;1&quot;, &qu
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

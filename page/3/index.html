@@ -234,220 +234,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/20/JavaScript-String/" itemprop="url">
-                  JavaScript String属性与方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T13:15:44+08:00" content="2016-05-20">
-              2016-05-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/20/JavaScript-String/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/JavaScript-String/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>在JavaScript中String是一个全局对象，用来构造字符串。  </p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><pre><code>String.fromCharCode(num1, ..., numN) 
-
-String.fromCharCode(65,66,67) //&apos;ABC&apos;
-</code></pre><h3 id="String实例方法"><a href="#String实例方法" class="headerlink" title="String实例方法"></a>String实例方法</h3><p>String.prototype.charAt()<br>　　charAt() 方法返回字符串中指定位置的字符。</p>
-<pre><code>str.charAt(index)
-
-&apos;cat&apos;.charAt(1); // &quot;a&quot;
-&apos;cat&apos;[1]; // &quot;a&quot;  
-</code></pre><p>String.prototype.charCodeAt()<br>　　charCodeAt() 方法返回0到65535之间的整数 </p>
-<pre><code>str.charCodeAt(index)
-
-&quot;ABC&quot;.charCodeAt(0) // 65
-</code></pre><p>String.prototype.concat()  </p>
-<blockquote>
-<p>强烈建议使用 赋值操作符（+, +=）代替 concat 方法。  </p>
-</blockquote>
-<p>　　concat() 方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。  </p>
-<pre><code>str.concat(string2, string3[, ..., stringN])
-
-var hello = &quot;Hello, &quot;;
-console.log(hello.concat(&quot;Kevin&quot;, &quot; have a nice day.&quot;)); /* Hello, Kevin have a nice day. */
-</code></pre><p>String.prototype.indexOf()<br>　　indexOf() 方法返回指定值在字符串对象中首次出现的位置。从 fromIndex 位置开始查找，如果不存在，则返回 -1。</p>
-<pre><code>str.indexOf(searchValue[, fromIndex])
-
-&quot;Blue Whale&quot;.indexOf(&quot;Blue&quot;);     // returns  0
-&quot;Blue Whale&quot;.indexOf(&quot;Blute&quot;);    // returns -1
-&quot;Blue Whale&quot;.indexOf(&quot;Whale&quot;, 0); // returns  5
-</code></pre><p>String.prototype.lastIndexOf()<br>　　lastIndexOf() 方法返回指定值在调用该方法的字符串中最后出现的位置，如果没找到则返回 -1。从该字符串的后面向前查找，从 fromIndex 处开始。</p>
-<pre><code>str.lastIndexOf(searchValue[, fromIndex])
-
-&quot;canal&quot;.lastIndexOf(&quot;a&quot;)   // returns 3
-&quot;canal&quot;.lastIndexOf(&quot;a&quot;,2) // returns 1
-&quot;canal&quot;.lastIndexOf(&quot;a&quot;,0) // returns -1
-&quot;canal&quot;.lastIndexOf(&quot;x&quot;)   // returns -1
-</code></pre><p>String.prototype.match()<br>　　当字符串匹配到正则表达式（regular expression）时，match() 方法会提取匹配项。返回一个数组 </p>
-<pre><code>str.match(regexp);
-</code></pre><p>String.prototype.replace()<br>　　replace() 方法使用一个替换值（replacement）替换掉一个匹配模式（pattern）在原字符串中某些或所有的匹配项，并返回替换后的字符串。这个替换模式可以是字符串或者RegExp（正则表达式），替换值可以是一个字符串或者一个函数。</p>
-<pre><code>var re = /apples/gi;
-var str = &quot;Apples are round, and apples are juicy.&quot;;
-var newstr = str.replace(re, &quot;oranges&quot;);  //&quot;oranges are round, and oranges are juicy.&quot;
-</code></pre><p>String.prototype.slice()<br>　　slice()方法提取字符串中的一部分，并返回这个新的字符串。</p>
-<pre><code>str.slice(beginSlice[, endSlice])
-
-var str1 = &apos;The morning is upon us.&apos;;
-var str2 = str1.slice(4, -2);
-
-console.log(str2); // OUTPUT: morning is upon u
-</code></pre><p>String.prototype.split()<br>　　split() 方法通过把字符串分割成子字符串来把一个 String 对象分割成一个字符串数组。</p>
-<pre><code>str.split([separator][, limit])
-
-var myString = &quot;Hello World. How are you doing?&quot;;
-var splits1 = myString.split(&quot; &quot;, 3); //[&quot;Hello&quot;, &quot;World.&quot;, &quot;How&quot;]
-var splits2 = myString.split(&quot;&quot;, 3);  //[&quot;H&quot;, &quot;e&quot;, &quot;l&quot;]
-</code></pre><p>String.prototype.substr()<br>　　substr() 方法返回字符串中从指定位置开始到指定长度的子字符串。</p>
-<pre><code>str.substr(start[, length])
-
-var str = &quot;abcdefghij&quot;;
-console.log(&quot;(1,2): &quot;    + str.substr(1,2));   // (1,2): bc
-console.log(&quot;(-3,2): &quot;   + str.substr(-3,2));  // (-3,2): hi
-console.log(&quot;(-3): &quot;     + str.substr(-3));    // (-3): hij
-console.log(&quot;(1): &quot;      + str.substr(1));     // (1): bcdefghij
-console.log(&quot;(-20, 2): &quot; + str.substr(-20,2)); // (-20, 2): ab
-console.log(&quot;(20, 2): &quot;  + str.substr(20,2));  // (20, 2):
-</code></pre><p>String.prototype.substring()<br>　　substring() 返回字符串两个索引之间（或到字符串末尾）的子串。</p>
-<blockquote>
-<p>如果 indexStart 大于 indexEnd，则 substring 的执行效果就像两个参数调换了一样。例如，str.substring(1, 0) == str.substring(0, 1)。</p>
-</blockquote>
-<pre><code>str.substring(indexStart[, indexEnd])
-
-var anyString = &quot;Mozilla&quot;;
-
-// 输出 &quot;Moz&quot;
-console.log(anyString.substring(0,3));
-console.log(anyString.substring(3,0));
-
-// 输出 &quot;lla&quot;
-console.log(anyString.substring(4,7));
-console.log(anyString.substring(7,4));
-
-// 输出 &quot;Mozill&quot;
-console.log(anyString.substring(0,6));
-
-// 输出 &quot;Mozilla&quot;
-console.log(anyString.substring(0,7));
-console.log(anyString.substring(0,10))
-</code></pre><p>String.prototype.trim()<br>　　trim() 方法会删除一个字符串两端的空白字符。在这个字符串里的空格包括所有的空格字符 (space, tab, no-break space 等)以及所有的行结束符（如 LF，CR）。</p>
-<blockquote>
-<p>trim() 方法并不影响原字符串本身，它返回的是一个新的字符串。</p>
-</blockquote>
-<pre><code>str.trim()
-
-
-var orig = &apos;   foo  &apos;;
-console.log(orig.trim()); // &apos;foo&apos;
-
-// 另一个.trim()例子，只从一边删除
-
-var orig = &apos;foo    &apos;;
-console.log(orig.trim()); // &apos;foo&apos;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/19/JavaScript-Array/" itemprop="url">
                   JavaScript Array属性与方法
                 </a>
@@ -1436,11 +1222,220 @@ server.listen(Number(process.argv[2]))
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/07/node-study/" itemprop="url">
+                  nodejs学习笔记(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-07T23:16:59+08:00" content="2016-05-07">
+              2016-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/07/node-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/node-study/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="freecodecamp之node学习笔记"><a href="#freecodecamp之node学习笔记" class="headerlink" title="freecodecamp之node学习笔记"></a><a href="https://www.freecodecamp.com" target="_blank" rel="external">freecodecamp</a>之node学习笔记</h1><hr>
+<h3 id="node安装"><a href="#node安装" class="headerlink" title="node安装"></a>node安装</h3><ol>
+<li><a href="https://nodejs.org/" title="nodejs官网" target="_blank" rel="external">nodejs官网</a> 直接下载LTS长期支持版本  </li>
+<li><code>node -v</code>查看nodejs版本号，<code>npm -v</code>查看npm版本号来确认是否安装成功。npm为nodejs包管理工具，安装nodejs会自动安装npm。  </li>
+</ol>
+<h3 id="Manage-Packages-with-NPM"><a href="#Manage-Packages-with-NPM" class="headerlink" title="Manage Packages with NPM"></a>Manage Packages with NPM</h3><blockquote>
+<p>内容出自<a href="https://github.com/npm/how-to-npm" target="_blank" rel="external">how-to-npm</a>并在<a href="http://c9.io" target="_blank" rel="external">c9</a>上运行  </p>
+</blockquote>
+<ol>
+<li>Install npm<br>安装npm: 　<code>npm install npm -g</code>，上面提到nodejs会自动安装npm，因此此处操作实为更新。  </li>
+<li>Dev Environment  </li>
+<li>Login<br>上述两步为新建开发文件夹以及模拟注册登录方便发布package  </li>
+<li><p>Start A Project<br><code>npm init</code> 引导你在当前文件夹下创建一个package.json文件，包括名称、版本、作者这些信息等，例如：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;@lee/chat-example&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;ISC&quot;
+}  
+</code></pre></li>
+<li><p>Install A Module<br><code>npm install &lt;modulename&gt;</code>,会在当前开发环境下下载module，如果加入参数 <code>-g</code> 则会在全局环境中安装该module，例如：<br><code>npm install @linclark/pkg</code>  </p>
+</li>
+<li><p>Listing Dependencies<br><code>npm ls</code>该命令可以查看项目中文件结构。如果按照上述步骤下来，此处会报错<code>npm ERR! extraneous: @linclark/pkg@1.0.2 /home/ubuntu/workspace/node_modules/@linclark/pkg</code>问题在于第五步，我们安装模块后并没有将其关联到项目中，因此我们需要在package.json中的dependencies添加依赖。运行<code>npm install @linclark/pkg --save</code>命令，此处<code>--save</code>代表安装该模块后再配置文件package.json文件中添加依赖，此时的package.json文件如下：  </p>
+<pre><code>{
+  &quot;name&quot;: &quot;leeween&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;,
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;keywords&quot;: [
+    &quot;an&quot;,
+    &quot;example&quot;
+  ]
+}
+</code></pre></li>
+<li><p>npm Test<br>新建test.js文件，随便打印点东西 <code>console.log(&quot;good job&quot;)</code><br>并在package.json中的scripts中添加<code>&quot;test&quot;: &quot;node test.js&quot;</code>此时的package.json文件如下：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;leeween&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.&quot;,
+  &quot;main&quot;: &quot;server.js&quot;,
+  &quot;author&quot;: &quot;Mostafa Eweda &lt;mo.eweda@gmail.com&gt;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@linclark/pkg&quot;: &quot;^1.0.2&quot;, 
+    &quot;async&quot;: &quot;~0.2.8&quot;,
+    &quot;express&quot;: &quot;~3.2.4&quot;,
+    &quot;socket.io&quot;: &quot;~0.9.14&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node server.js&quot;,
+    &quot;test&quot;: &quot;node test.js&quot;
+  },
+  &quot;devDependencies&quot;: {},
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;keywords&quot;: [
+    &quot;an&quot;,
+    &quot;example&quot;
+  ]
+}
+</code></pre><p>运行<code>node test.js</code> 会发现打印了good job  </p>
+</li>
+<li>Package Niceties<br>我们创建的package.json没有怎么填信息，所以当别人install下来的时候会直接懵逼，所以我们应该添加一个README.md文件来添加说明，最好将一下重要信息填在package.json中。  </li>
+<li>Publish<br><code>npm publish</code> 发布你的module，<code>npm view &lt;modulename&gt;</code>可以查看名为modulename的module内容，同时也可以检测该名称是否被用。  </li>
+<li>Version<br>npm中的每个package都拥有一个版本号，比如说1.2.3 其中3是指Patch version. Update for every change，2是指Minor version. Update for API additions，1是指Major version. Update for breaking API changes.<br><code>npm version &lt;versionnum&gt;</code>更新版本号至versionnum。  </li>
+<li>Dist Tag  </li>
+<li><p>Dist Tag Removal<br>how-to-npm中的11和12可能有bug，添加dist-tag一直404，官方<a href="https://github.com/npm/how-to-npm/issues/45" target="_blank" rel="external">github issue45</a>上也是似是而非，在此不做深究。语法如下： </p>
+<pre><code>npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;]
+npm dist-tag rm &lt;pkg&gt; &lt;tag&gt;
+npm dist-tag ls [&lt;pkg&gt;]
+
+aliases: dist-tags 
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1481,7 +1476,7 @@ server.listen(Number(process.argv[2]))
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1489,7 +1484,7 @@ server.listen(Number(process.argv[2]))
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1498,7 +1493,7 @@ server.listen(Number(process.argv[2]))
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1556,7 +1551,7 @@ server.listen(Number(process.argv[2]))
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
